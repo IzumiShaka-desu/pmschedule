@@ -1,0 +1,55 @@
+<?php
+class Schedule extends CI_Controller
+{
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('m_schedules');
+		$this->load->helper('url_helper');
+	}
+	public function index()
+	{
+		// if user not loggin redirect to login page
+		// if (!$this->session->userdata('logged_in')) {
+		// 	redirect('login');
+		// }
+		// det schedules data
+		// $data['schedules'] = $this->m_schedules->get_schedules();
+		$data['schedules'] = [[
+			'title' => 'All Day Event',
+			'start' => '2023-01-01'
+		]];
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav');
+		$this->load->view('index', $data);
+		$this->load->view('templates/footer', $data);
+		// $this->load->view('index');
+		// echo 'Hello World!';
+	}
+	public function add()
+	{
+		// if user not loggin redirect to login page
+		// if (!$this->session->userdata('logged_in')) {
+		// 	redirect('login');
+		// }
+		// det schedules data
+		// $data['schedules'] = $this->m_schedules->get_schedules();
+		$data['schedules'] = [[
+			'title' => 'All Day Event',
+			'start' => '2023-01-01'
+		]];
+		// $data['checksheet'] = $this->m_schedules->get_checksheet();
+		$data['checksheet'] = array(
+			array('id' => 1, 'name' => 'Checksheet 1'),
+			array('id' => 2, 'name' => 'Checksheet 2'),
+			array('id' => 3, 'name' => 'Checksheet 3'),
+		);
+		$this->load->view('templates/header');
+		$this->load->view('templates/nav');
+		$this->load->view('add', $data);
+		$this->load->view('templates/footer', $data);
+		// $this->load->view('index');
+		// echo 'Hello World!';
+	}
+}
