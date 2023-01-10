@@ -597,6 +597,37 @@
 			refreshDataTable();
 			refreshCalendar();
 		})
+		$('#save-all').click(function() {
+			console.log(dataTableRows);
+			var jsonObjects = [];
+			let usedRows = ["desc", "date", "idChecksheet", "priority", ];
+			dataTableRows.forEach(function callback(row, index) {
+				var jsonObject = {};
+				usedRows.forEach((key) => {
+					if (typeof(row[key]) === 'undefined') {
+						jsonObject[key] = "";
+					} else {
+						jsonObject[key] = row[key];
+					}
+				});
+				jsonObjects.push(jsonObject);
+			});
+			console.log(JSON.stringify(jsonObjects));
+			// var usedRows = ["nama_alat", "pabrik_pembuat", "kapasitas", "lokasi", "no_seri", "no_perijinan", "expired_date"];
+			//then post raw json data to  document/imports
+			$.ajax({
+				url: 'schedule/imports',
+				type: 'POST',
+				data: JSON.stringify(jsonObjects),
+				success: function(data) {
+					console.log(data);
+					// alert('success');
+					//then locate to root path /
+					window.location.href = '<?php echo base_url(); ?>';
+				}
+			});
+
+		});
 		// on import-table click then post json from datatable to server
 		$('#import-table').click(function() {
 			console.log(dataTableRows);
