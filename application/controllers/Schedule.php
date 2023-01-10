@@ -41,7 +41,7 @@ class Schedule extends CI_Controller
 		// 	redirect('login');
 		// }
 		// det schedules data
-		$schedules = $this->m_schedules->get_schedules_with_status()();
+		$schedules = $this->m_schedules->get_schedules_with_status();
 		$data['schedules'] = [];
 		$data['rawSchedules'] = $schedules;
 		foreach ($schedules as $key => $value) {
