@@ -612,9 +612,9 @@
 						}
 					} else {
 						if (key == "desc") {
-							jsonObject["description"] = "";
+							jsonObject["description"] = row[key];
 						} else {
-							jsonObject[key] = "";
+							jsonObject[key] = row[key];
 						}
 					}
 				});
