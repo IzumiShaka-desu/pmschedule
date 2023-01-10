@@ -101,11 +101,12 @@
 
 				</div>
 
-				<div class="col-12 text-right" style="margin-bottom: 18px;">
-					<button type="button" class="btn btn-alt-primary" id="import-table">Save All</button>
-					<!-- create whitespace -->
-					<br />
-				</div>
+
+			</div>
+			<div class="col-12 text-right" style="margin-bottom: 18px;">
+				<button type="button" class="btn btn-alt-primary" id="save-all">Save All</button>
+				<!-- create whitespace -->
+				<br />
 			</div>
 			<div class="col-12 text-left" style="margin-bottom: 18px;">
 				<!-- create selectable tab item there is calendar icon and table icon, then listen tab item change, when tab item changed console log -->
