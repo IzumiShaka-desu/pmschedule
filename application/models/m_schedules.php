@@ -16,6 +16,14 @@ class M_schedules extends CI_Model
 		return $query->result_array();
 	}
 
+	public function get_checksheet()
+	{
+		$this->db->from('checksheet');
+		$this->db->order_by('id_checksheet', 'DESC');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
 	public function get_schedules_with_status()
 	{
 		$this->db->from($this->tableName);
