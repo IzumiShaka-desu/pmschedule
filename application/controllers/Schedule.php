@@ -16,7 +16,7 @@ class Schedule extends CI_Controller
 		// }
 		// det schedules data
 		// $data['schedules'] = $this->m_schedules->get_schedules();
-		$schedules = $this->m_schedules->get_schedules_with_status()();
+		$schedules = $this->m_schedules->get_schedules_with_status();
 		$data['schedules'] = [];
 		$data['rawSchedules'] = $schedules;
 		foreach ($schedules as $key => $value) {
