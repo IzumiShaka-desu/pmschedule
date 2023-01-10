@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:8889',
-	'username' => 'root',
-	'password' => 'root',
-	'database' => 'document_management_system',
-	'dbdriver' => 'mysqli',
+	'hostname' => '10.19.23.18',
+	'username' => 'sa',
+	'password' => 'admin',
+	'database' => 'db_checksheet',
+	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
