@@ -34,11 +34,21 @@ class Schedule extends CI_Controller
 		// 	redirect('login');
 		// }
 		// det schedules data
-		// $data['schedules'] = $this->m_schedules->get_schedules();
-		$data['schedules'] = [[
-			'title' => 'All Day Event',
-			'start' => '2023-01-01'
-		]];
+		$schedules = $this->m_schedules->get_schedules_with_status()();
+		$data['schedules'] = [];
+		$data['rawSchedules'] = $schedules;
+		foreach ($schedules as $key => $value) {
+			$data['schedules'][] = [
+				'title' => $value['name'],
+				'start' => $value['date'],
+				'backgroundColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
+				'borderColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
+			];
+		}
+		// $data['schedules'] = [[
+		// 	'title' => 'All Day Event',
+		// 	'start' => '2023-01-01'
+		// ]];
 		// $data['checksheet'] = $this->m_schedules->get_checksheet();
 		$data['checksheet'] = array(
 			array('id' => 1, 'name' => 'Checksheet 1'),
