@@ -46,6 +46,11 @@ class Schedule extends CI_Controller
 			//get json data the parse to array and save with add_multiple_schedules
 			$json = file_get_contents('php://input');
 			$data = json_decode($json, true);
+			//convert $data['date'] to object date
+			foreach ($data as $key => $value) {
+				$data[$key]['date'] = date('Y-m-d', strtotime($value['date']));
+			}
+
 			$result = $this->m_schedules->add_multiple_schedules($data);
 
 			return $result;
@@ -58,7 +63,7 @@ class Schedule extends CI_Controller
 		$data['rawSchedules'] = $schedules;
 		foreach ($schedules as $key => $value) {
 			$data['schedules'][] = [
-				'title' => $value['name'],
+				'title' => $value['description'],
 				'start' => $value['date'],
 				'backgroundColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
 				'borderColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
