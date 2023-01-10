@@ -616,7 +616,7 @@
 			// var usedRows = ["nama_alat", "pabrik_pembuat", "kapasitas", "lokasi", "no_seri", "no_perijinan", "expired_date"];
 			//then post raw json data to  document/imports
 			$.ajax({
-				url: 'schedule/imports',
+				url: 'schedule/add',
 				type: 'POST',
 				data: JSON.stringify(jsonObjects),
 				success: function(data) {
