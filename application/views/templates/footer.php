@@ -71,7 +71,7 @@
 	echo "console.log(" . json_encode($rawSchedules) . ")";
 	if (isset($rawSchedules)) {
 		//insert every item to calendarEvents
-		foreach ($schedules as $schedule) {
+		foreach ($rawSchedules as $schedule) {
 			//schedule properties: id_schedule,id_checksheet,status,date,priority,description
 			echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
 			echo "rawSchedule.push(item);";
