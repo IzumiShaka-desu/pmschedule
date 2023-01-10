@@ -56,12 +56,19 @@ class Schedule extends CI_Controller
 		// 	'title' => 'All Day Event',
 		// 	'start' => '2023-01-01'
 		// ]];
-		// $data['checksheet'] = $this->m_schedules->get_checksheet();
-		$data['checksheet'] = array(
-			array('id' => 1, 'name' => 'Checksheet 1'),
-			array('id' => 2, 'name' => 'Checksheet 2'),
-			array('id' => 3, 'name' => 'Checksheet 3'),
-		);
+		$checksheet = $this->m_schedules->get_checksheet();
+		$data['checksheet'] =  [];
+		foreach ($checksheet as $key => $value) {
+			$data['checksheet'][] = [
+				'id' => $value['id_checksheet'],
+				'name' => $value['title'],
+			];
+		}
+		// $data['checksheet'] = array(
+		// 	array('id' => 1, 'name' => 'Checksheet 1'),
+		// 	array('id' => 2, 'name' => 'Checksheet 2'),
+		// 	array('id' => 3, 'name' => 'Checksheet 3'),
+		// );
 		$this->load->view('templates/header');
 		$this->load->view('templates/nav');
 		$this->load->view('add', $data);
