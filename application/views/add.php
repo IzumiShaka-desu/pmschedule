@@ -61,7 +61,7 @@
 						<div class="form-group row">
 							<label class="col-12" for="example-text-input">Checksheet</label>
 							<div class="col-12">
-								<select class="form-control" id="idChecksheet" name="checksheet">
+								<select class="form-control" id="id_checksheet" name="checksheet">
 									<?php
 									//array dummy
 									foreach ($checksheet as $key => $value) { ?>

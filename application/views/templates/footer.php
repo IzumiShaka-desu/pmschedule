@@ -102,15 +102,15 @@
 
 	function refreshDataTable() {
 		$("#DataTables_Table_0").DataTable().clear().draw();
-		let usedRows = ["desc", "date", "idChecksheet", "priority", ];
+		let usedRows = ["desc", "date", "id_checksheet", "priority", ];
 
 		dataTableRows.forEach(function callback(row, index) {
 			//usinf datatable add every row
 			var cells = [(index + 1)];
 			usedRows.forEach((key) => {
-				if (key === "idChecksheet") {
+				if (key === "id_checksheet") {
 					//create option for selected checksheet from checksheets
-					var options = '<select class="form-control" id="idChecksheet-' + index + '" onchange="updateChecksheet(' + index + ')">';
+					var options = '<select class="form-control" id="id_checksheet-' + index + '" onchange="updateChecksheet(' + index + ')">';
 					checksheets.forEach((checksheet) => {
 						if (checksheet.id === row[key]) {
 							options += "<option value='" + checksheet.id + "' selected>" + checksheet.name + "</option>";
@@ -151,7 +151,7 @@
 	}
 
 	function updateChecksheet(index) {
-		dataTableRows[index].idChecksheet = $("#idChecksheet-" + index).val();
+		dataTableRows[index].id_checksheet = $("#id_checksheet-" + index).val();
 		console.log(dataTableRows[index]);
 	}
 
@@ -209,14 +209,14 @@
 			//usinf datatable add every row
 			var cells = [(index + 1)];
 			usedRows.forEach((key) => {
-				if (key === "idChecksheet") {
+				if (key === "id_checksheet") {
 					//create option for selected checksheet from checksheets
 					var options = "";
 					checksheets.forEach((checksheet) => {
-						if (checksheet.idChecksheet === row[key]) {
-							options += "<option value='" + checksheet.idChecksheet + "' selected>" + checksheet.namaChecksheet + "</option>";
+						if (checksheet.id_checksheet === row[key]) {
+							options += "<option value='" + checksheet.id_checksheet + "' selected>" + checksheet.namaChecksheet + "</option>";
 						} else {
-							options += "<option value='" + checksheet.idChecksheet + "'>" + checksheet.namaChecksheet + "</option>";
+							options += "<option value='" + checksheet.id_checksheet + "'>" + checksheet.namaChecksheet + "</option>";
 						}
 					});
 
@@ -244,12 +244,12 @@
 		})
 	}
 
-	function addSchedule(desc, date, idChecksheet, priority) {
+	function addSchedule(desc, date, id_checksheet, priority) {
 		// add new temporary schedule to dataTableRows
 		dataTableRows.push({
 			"desc": desc,
 			"date": date,
-			"idChecksheet": idChecksheet,
+			"id_checksheet": id_checksheet,
 			"priority": priority
 		});
 		//refresh datatable
@@ -422,7 +422,7 @@
 			e.preventDefault();
 			var desc = $("#description").val();
 			var date = $("#date").val();
-			var idChecksheet = $("#idChecksheet").val();
+			var id_checksheet = $("#id_checksheet").val();
 			var priority = $("#priority").val();
 			//validate every field
 			//check if desc is empty
@@ -439,11 +439,11 @@
 			} else {
 				$("#date").removeClass("is-invalid is-invalid-custom");
 			}
-			if (idChecksheet == "") {
-				$("#idChecksheet").addClass("is-invalid is-invalid-custom");
+			if (id_checksheet == "") {
+				$("#id_checksheet").addClass("is-invalid is-invalid-custom");
 				return;
 			} else {
-				$("#idChecksheet").removeClass("is-invalid is-invalid-custom");
+				$("#id_checksheet").removeClass("is-invalid is-invalid-custom");
 			}
 			if (priority == "") {
 				$("#priority").addClass("is-invalid is-invalid-custom");
@@ -453,7 +453,7 @@
 			}
 			//add schedule if all field is valid
 
-			addSchedule(desc, date, idChecksheet, priority);
+			addSchedule(desc, date, id_checksheet, priority);
 
 		});
 		// listen #table-view on class property changed if its .show then show else hide
@@ -588,8 +588,8 @@
 						newRow[key] = row[key];
 					}
 				})
-				//set idChecksheet to first id from checksheets
-				newRow["idChecksheet"] = checksheets[0].id;
+				//set id_checksheet to first id from checksheets
+				newRow["id_checksheet"] = checksheets[0].id;
 				return newRow;
 			});
 			dataTableRows = dataTableRows.concat(newRows);
@@ -600,7 +600,7 @@
 		$('#save-all').click(function() {
 			console.log(dataTableRows);
 			var jsonObjects = [];
-			let usedRows = ["desc", "date", "idChecksheet", "priority", ];
+			let usedRows = ["desc", "date", "id_checksheet", "priority", ];
 			dataTableRows.forEach(function callback(row, index) {
 				var jsonObject = {};
 				usedRows.forEach((key) => {
