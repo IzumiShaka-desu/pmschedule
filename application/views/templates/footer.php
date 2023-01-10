@@ -60,11 +60,20 @@
 	var dataTableRows = [];
 	let calendarEvents = [];
 	let checksheets = [];
+	let rawSchedule = [];
 	<?php
 	if (isset($schedules)) {
 		//insert every item to calendarEvents
 		foreach ($schedules as $schedule) {
 			echo "calendarEvents.push({title: '{$schedule['title']}', start: '{$schedule['start']}'});";
+		}
+	}
+	if (isset($rawSchedules)) {
+		//insert every item to calendarEvents
+		foreach ($schedules as $schedule) {
+			//schedule properties: id_schedule,id_checksheet,status,date,priority,description
+			echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
+			echo "rawSchedule.push(item);";
 		}
 	}
 	?>
