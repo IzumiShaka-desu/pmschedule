@@ -605,9 +605,17 @@
 				var jsonObject = {};
 				usedRows.forEach((key) => {
 					if (typeof(row[key]) === 'undefined') {
-						jsonObject[key] = "";
+						if (key == "desc") {
+							jsonObject["description"] = "";
+						} else {
+							jsonObject[key] = "";
+						}
 					} else {
-						jsonObject[key] = row[key];
+						if (key == "desc") {
+							jsonObject["description"] = "";
+						} else {
+							jsonObject[key] = "";
+						}
 					}
 				});
 				jsonObjects.push(jsonObject);
