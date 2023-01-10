@@ -44,7 +44,8 @@ class Schedule extends CI_Controller
 		// then insert data to database
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			//get json data the parse to array and save with add_multiple_schedules
-			$data = json_decode($this->input->post('data'), true);
+			$json = file_get_contents('php://input');
+			$data = json_decode($json, true);
 			$result = $this->m_schedules->add_multiple_schedules($data);
 
 			return $result;
