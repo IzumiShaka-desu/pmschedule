@@ -2,7 +2,7 @@
 <?php
 class M_schedules extends CI_Model
 {
-	const tableName = 'schedule';
+	private $tableName = 'schedule';
 	public function __construct()
 	{
 		$this->load->database();
