@@ -40,7 +40,18 @@ class Schedule extends CI_Controller
 		// if (!$this->session->userdata('logged_in')) {
 		// 	redirect('login');
 		// }
-		// det schedules data
+		// check if is POST request
+		// then insert data to database
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			//get json data the parse to array and save with add_multiple_schedules
+			$data = json_decode($this->input->post('data'), true);
+			$result = $this->m_schedules->add_multiple_schedules($data);
+
+			return $result;
+		}
+
+
+		// get schedules data
 		$schedules = $this->m_schedules->get_schedules_with_status();
 		$data['schedules'] = [];
 		$data['rawSchedules'] = $schedules;
