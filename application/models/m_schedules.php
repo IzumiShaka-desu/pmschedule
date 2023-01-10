@@ -54,7 +54,7 @@ class M_schedules extends CI_Model
 				} else {
 					$this->db->from('response');
 					//where id checksheet same and where $value['date'](date) same as  date(datetime) 
-					$this->db->where('CAST(date as DATE)', $value['date']);
+					$this->db->where('CAST(date as DATE)=', $value['date']);
 					$this->db->where('id_checksheet', $value['id_checksheet']);
 					$query = $this->db->get();
 					$no_response = $query->result_array();
