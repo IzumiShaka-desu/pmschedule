@@ -38,6 +38,7 @@ class M_schedules extends CI_Model
 		foreach ($result as $key => $value) {
 			$this->db->from('response');
 			$this->db->where('id_checksheet', $value['id_checksheet']);
+			$this->db->where('CAST(date as DATE)=', $value['date']);
 			$this->db->where('status', 'submit');
 			$query = $this->db->get();
 			$done = $query->result_array();
