@@ -94,10 +94,10 @@
 		$("#modalDetail-content").empty();
 		var schedule = rawSchedule.find(x => x.id == idSchedule);
 		var dialogContent = "";
-		dialogContent += "<div class='modal-header'>";
+		// dialogContent += "<div class='modal-header'>";
 		dialogContent += '<div class="block block-themed block-transparent mb-0">';
 		dialogContent += '<div class="block-header bg-primary-dark">';
-		dialogContent += '<h3 class="block-title">Upload File</h3>';
+		dialogContent += '<h3 class="block-title">Detail Schedule</h3>';
 		dialogContent += '<div class="block-options">';
 		dialogContent += '<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">';
 		dialogContent += '<i class="fa fa-fw fa-times"></i>';
@@ -105,7 +105,7 @@
 		dialogContent += '</div>';
 		dialogContent += '</div>';
 		dialogContent += "</div>";
-		dialogContent += "</div>";
+		// dialogContent += "</div>";
 		dialogContent += "<div class='modal-body'>";
 
 		// show description as Paragraph
