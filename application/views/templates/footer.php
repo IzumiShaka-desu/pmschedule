@@ -65,7 +65,7 @@
 	if (isset($schedules)) {
 		//insert every item to calendarEvents
 		foreach ($schedules as $schedule) {
-			echo "calendarEvents.push({title: '{$schedule['title']}', start: '{$schedule['start']}'});";
+			echo "calendarEvents.push({title: '{$schedule['title']}',id:{$schedule['title']}, start: '{$schedule['start']}'});";
 		}
 	}
 	echo "console.log(" . json_encode($rawSchedules) . ");";
@@ -100,6 +100,8 @@
 			},
 			eventClick: function(info) {
 				console.log(info)
+				console.log(info.event)
+				console.log(info.event._def.defId)
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 				return {
