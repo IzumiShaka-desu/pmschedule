@@ -39,6 +39,7 @@ class M_schedules extends CI_Model
 			$this->db->from('response');
 			$this->db->where('id_checksheet', $value['id_checksheet']);
 			$this->db->where('CAST(date as DATE)=', $value['date']);
+			$this->db->where('note', '%pmschedule%');
 			$this->db->where('status', 'submit');
 			$query = $this->db->get();
 			$done = $query->result_array();
@@ -48,6 +49,7 @@ class M_schedules extends CI_Model
 				$this->db->from('response');
 				$this->db->where('id_checksheet', $value['id_checksheet']);
 				$this->db->where('status', 'draft');
+				$this->db->where('note', '%pmschedule%');
 				$query = $this->db->get();
 				$draft = $query->result_array();
 				if (count($draft) > 0) {
@@ -57,6 +59,7 @@ class M_schedules extends CI_Model
 					//where id checksheet same and where $value['date'](date) same as  date(datetime) 
 					$this->db->where('CAST(date as DATE)=', $value['date']);
 					$this->db->where('id_checksheet', $value['id_checksheet']);
+					$this->db->where('note', '%pmschedule%');
 					$query = $this->db->get();
 					$no_response = $query->result_array();
 					if (count($no_response) > 0) {
