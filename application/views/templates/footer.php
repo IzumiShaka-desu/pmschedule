@@ -125,7 +125,7 @@
 		dialogContent += "<div class='row'>";
 		dialogContent += "<div class='col-md-12'>";
 		dialogContent += '<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>';
-		const rawUrl = "http://10.19.23.18/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=dashboard/insertData?id=" + idSchedule;
+		const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=dashboard/insertData?id=" + idSchedule;
 
 		const base64url = btoa(rawUrl);
 		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>Open Checksheet</a>";
