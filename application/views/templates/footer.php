@@ -95,8 +95,16 @@
 		var schedule = rawSchedule.find(x => x.id == idSchedule);
 		var dialogContent = "";
 		dialogContent += "<div class='modal-header'>";
-		dialogContent += "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
-		dialogContent += "<h3 class='block-title'>Detail Schedule" + schedule.id + "</h3>";
+		dialogContent += '<div class="block block-themed block-transparent mb-0">';
+		dialogContent += '<div class="block-header bg-primary-dark">';
+		dialogContent += '<h3 class="block-title">Upload File</h3>';
+		dialogContent += '<div class="block-options">';
+		dialogContent += '<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">';
+		dialogContent += '<i class="fa fa-fw fa-times"></i>';
+		dialogContent += '</button>';
+		dialogContent += '</div>';
+		dialogContent += '</div>';
+		dialogContent += "</div>";
 		dialogContent += "</div>";
 		dialogContent += "<div class='modal-body'>";
 
