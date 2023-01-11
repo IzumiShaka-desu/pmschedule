@@ -45,6 +45,13 @@
  			</div>
  			<!-- modal for upload file by index of documents  -->
  			<!-- using post url 'upload/:id' -->
+ 			<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-hidden="true">
+ 				<div class="modal-dialog modal-dialog-top modal-lg" role="document">
+ 					<!-- Modal content-->
+ 					<div class="modal-content" id="modalDetail-content">
+ 					</div>
+ 				</div>
+ 			</div>
  			<div class="modal" id="modal-block-upload" tabindex="-1" role="dialog" aria-labelledby="modal-block-upload" aria-hidden="true">
  				<div class="modal-dialog modal-dialog-top modal-lg" role="document">
  					<div class="modal-content">
@@ -72,13 +79,7 @@
  					</div>
  				</div>
  				<!-- END Page Content -->
- 				<div class="modal fade" id="modalDetail" role="dialog">
- 					<div class="modal-dialog">
- 						<!-- Modal content-->
- 						<div class="modal-content" id="modalDetail-content">
- 						</div>
- 					</div>
- 				</div>
+
 
  </main>
  -->
