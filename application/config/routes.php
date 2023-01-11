@@ -58,5 +58,6 @@ $route['translate_uri_dashes'] = FALSE;
 $route['home'] = 'schedule';
 $route['imports'] = 'schedule/imports';
 $route['add'] = 'schedule/add';
+$route['redirect/(:any)'] = 'schedule/redirect/$1';
 $route['upload/(:any)'] = 'schedule/upload/$1';
 $route['notify/(:any)'] = 'schedule/sendExpiredEmailNotification/$1';
