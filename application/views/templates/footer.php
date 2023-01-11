@@ -148,6 +148,7 @@
 				console.log(info)
 				console.log(info.event)
 				console.log(info.event._def.publicId)
+				showDialog(info.event._def.publicId);
 
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
