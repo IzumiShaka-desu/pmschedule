@@ -88,6 +88,31 @@
 	?>
 	var calendar;
 
+	function showDialog(idSchedule) {
+		//clear and append detail schedulee information on dialog
+		// that will contains description, date, and button to open checksheet url in newpage
+		$("#schedule-dialog").empty();
+		var schedule = rawSchedule.find(x => x.id == idSchedule);
+		var dialogContent = "";
+		dialogContent += "<div class='block-content block-content-full'>";
+		dialogContent += "<div class='row'>";
+		dialogContent += "<div class='col-md-12'>";
+		// show description as Paragraph
+		dialogContent += "<p class='font-size-sm text-muted'>Description</p>";
+		dialogContent += "<p class='font-size-sm text-muted'>" + schedule.description + "</p>";
+		//show date as Paragraph
+		dialogContent += "<p class='font-size-sm text-muted'>Date</p>";
+		dialogContent += "<p class='font-size-sm text-muted'>" + schedule.date + "</p>";
+		//show button to open checksheet in new page
+		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('checksheet') ?>/" + schedule.id_checksheet + "' target='_blank'>Open Checksheet</a>";
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+		$("#schedule-dialog").append(dialogContent);
+		//show dialog
+		$("#schedule-dialog").dialog("open");
+	}
+
 	function refreshCalendar() {
 		var calendarEl = document.getElementById('calendar');
 		calendar = new FullCalendar.Calendar(calendarEl, {
@@ -101,7 +126,8 @@
 			eventClick: function(info) {
 				console.log(info)
 				console.log(info.event)
-				console.log(info.event._def.defId)
+				console.log(info.event._def.publicId)
+
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 				return {
