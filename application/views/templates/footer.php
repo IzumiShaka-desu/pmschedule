@@ -124,6 +124,7 @@
 		dialogContent += "<div class='modal-footer'>";
 		dialogContent += "<div class='row'>";
 		dialogContent += "<div class='col-md-12'>";
+		dialogContent += '<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>';
 		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('checksheet') ?>/" + schedule.id_checksheet + "' target='_blank'>Open Checksheet</a>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
