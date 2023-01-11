@@ -70,9 +70,6 @@ class M_schedules extends CI_Model
 				}
 			}
 		}
-
-
-
 		return $result;
 	}
 
