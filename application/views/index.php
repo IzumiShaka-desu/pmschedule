@@ -72,7 +72,8 @@
  					</div>
  				</div>
  				<!-- END Page Content -->
-
+ 				<div id="schedule-dialog" title="Detail Schedule">
+ 				</div>
 
  </main>
  -->
