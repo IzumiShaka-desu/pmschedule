@@ -98,6 +98,9 @@
 				center: 'title',
 				right: 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
+			eventClick: function(info) {
+				console.log(info)
+			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 				return {
 					title: row.desc,
