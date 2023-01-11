@@ -457,7 +457,9 @@
 		// });
 		setupPreviewScheduleTabs();
 		setupFormScheduleTabs();
-
+		$("#schedule-dialog").dialog({
+			autoOpen: false
+		});
 		$('[data-toggle="tooltip"]').tooltip();
 		$("#form-add-schedule").submit(function(e) {
 			e.preventDefault();
