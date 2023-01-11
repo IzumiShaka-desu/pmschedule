@@ -122,9 +122,7 @@
 		dialogContent += "</div>";
 		$("#modalDetail-content").append(dialogContent);
 		//show modal
-		$('#modalDetail').modal({
-			show: true
-		});
+		$('#modalDetail').modal('show');
 	}
 
 	function refreshCalendar() {
