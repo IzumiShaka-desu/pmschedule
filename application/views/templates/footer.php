@@ -65,7 +65,7 @@
 	if (isset($schedules)) {
 		//insert every item to calendarEvents
 		foreach ($schedules as $schedule) {
-			echo "calendarEvents.push({title: '{$schedule['title']}',id:{$schedule['title']}, start: '{$schedule['start']}'});";
+			echo "calendarEvents.push({title: '{$schedule['title']}',id:{$schedule['id']}, start: '{$schedule['start']}'});";
 		}
 	}
 	echo "console.log(" . json_encode($rawSchedules) . ");";
