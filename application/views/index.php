@@ -72,7 +72,12 @@
  					</div>
  				</div>
  				<!-- END Page Content -->
- 				<div id="schedule-dialog" title="Detail Schedule">
+ 				<div class="modal fade" id="modalDetail" role="dialog">
+ 					<div class="modal-dialog">
+ 						<!-- Modal content-->
+ 						<div class="modal-content" id="modalDetail-content">
+ 						</div>
+ 					</div>
  				</div>
 
  </main>

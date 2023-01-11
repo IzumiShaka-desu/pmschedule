@@ -89,28 +89,42 @@
 	var calendar;
 
 	function showDialog(idSchedule) {
-		//clear and append detail schedulee information on dialog
+		//clear and append detail schedule information on modal
 		// that will contains description, date, and button to open checksheet url in newpage
-		$("#schedule-dialog").empty();
+		$("#modalDetail-content").empty();
 		var schedule = rawSchedule.find(x => x.id == idSchedule);
 		var dialogContent = "";
-		dialogContent += "<div class='block-content block-content-full'>";
+		dialogContent += "<div class='modal-header'>";
+		dialogContent += "<button type='button' class='close' data-dismiss='modal'>&times;</button>";
+		dialogContent += "<h3 class='block-title'>Detail Schedule" + schedule.id + "</h3>";
+		dialogContent += "</div>";
+		dialogContent += "<div class='modal-body'>";
+
+		// show description as Paragraph
 		dialogContent += "<div class='row'>";
 		dialogContent += "<div class='col-md-12'>";
-		// show description as Paragraph
 		dialogContent += "<p class='font-size-sm text-muted'>Description</p>";
 		dialogContent += "<p class='font-size-sm text-muted'>" + schedule.description + "</p>";
 		//show date as Paragraph
 		dialogContent += "<p class='font-size-sm text-muted'>Date</p>";
 		dialogContent += "<p class='font-size-sm text-muted'>" + schedule.date + "</p>";
 		//show button to open checksheet in new page
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+
+		dialogContent += "<div class='modal-footer'>";
+		dialogContent += "<div class='row'>";
+		dialogContent += "<div class='col-md-12'>";
 		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('checksheet') ?>/" + schedule.id_checksheet + "' target='_blank'>Open Checksheet</a>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
-		$("#schedule-dialog").append(dialogContent);
-		//show dialog
-		$("#schedule-dialog").dialog("open");
+		$("#modalDetail-content").append(dialogContent);
+		//show modal
+		$('#modalDetail').modal({
+			show: true
+		});
 	}
 
 	function refreshCalendar() {
@@ -457,9 +471,7 @@
 		// });
 		setupPreviewScheduleTabs();
 		setupFormScheduleTabs();
-		$("#schedule-dialog").dialog({
-			autoOpen: false
-		});
+
 		$('[data-toggle="tooltip"]').tooltip();
 		$("#form-add-schedule").submit(function(e) {
 			e.preventDefault();
