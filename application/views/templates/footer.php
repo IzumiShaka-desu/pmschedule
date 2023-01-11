@@ -605,6 +605,7 @@
 					html_select_content += "<option value='" + key + "'>" + key + "</option>";
 				})
 				html_select_content += "</select>";
+				$("#select-sheet").empty();
 				$("#select-sheet").append(html_select_content);
 			};
 			reader.onerror = function(ex) {
