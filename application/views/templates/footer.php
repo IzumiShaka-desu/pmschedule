@@ -116,6 +116,30 @@
 		//show date as Paragraph
 		dialogContent += "<p class='font-size-sm text-muted'>Date</p>";
 		dialogContent += "<p class='font-size-sm text-muted'>" + schedule.date + "</p>";
+		//show priority as flag if high is red, if medium is yellow, if low is green
+		dialogContent += "<p class='font-size-sm text-muted'>Priority</p>";
+		dialogContent += "<p class='font-size-sm text-muted'>";
+		if (schedule.priority == "high") {
+			dialogContent += "<span class='badge badge-danger'>High</span>";
+		} else if (schedule.priority == "medium") {
+			dialogContent += "<span class='badge badge-warning'>Medium</span>";
+		} else if (schedule.priority == "low") {
+			dialogContent += "<span class='badge badge-success'>Low</span>";
+		}
+		dialogContent += "</p>";
+
+		//show status as flag if not started is red, if working is yellow, if done is green
+		dialogContent += "<p class='font-size-sm text-muted'>Status</p>";
+		dialogContent += "<p class='font-size-sm text-muted'>";
+		if (schedule.status == "not started") {
+			dialogContent += "<span class='badge badge-danger'>Not Started</span>";
+		} else if (schedule.status == "working") {
+			dialogContent += "<span class='badge badge-warning'>Working</span>";
+		} else if (schedule.status == "done") {
+			dialogContent += "<span class='badge badge-success'>Done</span>";
+		}
+		dialogContent += "</p>";
+
 		//show button to open checksheet in new page
 		dialogContent += "</div>";
 		dialogContent += "</div>";
