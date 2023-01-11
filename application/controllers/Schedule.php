@@ -21,6 +21,7 @@ class Schedule extends CI_Controller
 		$data['rawSchedules'] = $schedules;
 		foreach ($schedules as $key => $value) {
 			$data['schedules'][] = [
+				'id' => $value['id_schedule'],
 				'title' => $value['description'],
 				'start' => $value['date'],
 				'backgroundColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
@@ -65,6 +66,7 @@ class Schedule extends CI_Controller
 		$data['rawSchedules'] = $schedules;
 		foreach ($schedules as $key => $value) {
 			$data['schedules'][] = [
+				'id' => $value['id_schedule'],
 				'title' => $value['description'],
 				'start' => $value['date'],
 				'backgroundColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
