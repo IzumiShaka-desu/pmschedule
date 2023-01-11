@@ -128,7 +128,7 @@
 		const rawUrl = "http://10.19.23.18/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=dashboard/insertData?id=" + idSchedule;
 
 		const base64url = btoa(rawUrl);
-		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('redirect') ?>/" + base64url + "' target='_blank'>Open Checksheet</a>";
+		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>Open Checksheet</a>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
