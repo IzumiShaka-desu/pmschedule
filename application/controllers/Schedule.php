@@ -35,6 +35,11 @@ class Schedule extends CI_Controller
 		// $this->load->view('index');
 		// echo 'Hello World!';
 	}
+	public function redirect($base64url)
+	{
+		$url = base64_decode($base64url);
+		echo "<script>window.location.href='$url'</script>";
+	}
 	public function add()
 	{
 		// if user not loggin redirect to login page
