@@ -30,51 +30,45 @@ class M_schedules extends CI_Model
 		$this->db->order_by('id_schedule', 'DESC');
 		$query = $this->db->get();
 		$result = $query->result_array();
-		//check every item status [done, working, not started]
-		//by check responds from table respose
-		//if there is a response with submit status is done
-		//if there is a response iwth draft status or no response but the date is same as current date schedule is working 
-		//else not started
+		//iterate every item and get response object from response table
 		foreach ($result as $key => $value) {
 			$this->db->from('response');
-			$this->db->where('id_checksheet', $value['id_checksheet']);
-			$this->db->where('CAST(date as DATE)=', $value['date']);
-			$this->db->where('note', '%schedule%');
-			$this->db->where('status', 'submit');
+			$this->db->where('note', "from-schedule-" . $value['id_schedule']);
+			$this->db->order_by('id_response', 'DESC');
+			$this->db->limit(1);
 			$query = $this->db->get();
-			$done = $query->result_array();
-			if (count($done) > 0) {
-				$result[$key]['status'] = 'done';
-			} else {
-				$this->db->from('response');
-				$this->db->where('id_checksheet', $value['id_checksheet']);
-				$this->db->where('status', 'draft');
-				$this->db->where('note', '%schedule%');
-				$query = $this->db->get();
-				$draft = $query->result_array();
-				if (count($draft) > 0) {
+			$response = $query->row_array();
+			$currentDate = date('Y-m-d');
+			$dueDate = $value['date'];
+
+			//check status [scheduled, missing, working, done, done early, done late]
+			// if there is no response, then check if the schedule date is currentDate, passed, or future
+			// else check if the response is have status draft if yes then check if the response date is passed or not
+			// else check if the response is have status done if yes then check if the response date is match,early or late
+			if (empty($response)) {
+				if ($currentDate == $dueDate) {
 					$result[$key]['status'] = 'working';
+				} else if ($currentDate > $dueDate) {
+					$result[$key]['status'] = 'missing';
 				} else {
-					$this->db->from('response');
-					//where id checksheet same and where $value['date'](date) same as  date(datetime) 
-					$this->db->where('CAST(date as DATE)=', $value['date']);
-					$this->db->where('id_checksheet', $value['id_checksheet']);
-					$this->db->where('note', '%schedule%');
-					$query = $this->db->get();
-					$no_response = $query->result_array();
-					if (count($no_response) > 0) {
-						$result[$key]['status'] = 'working';
+					$result[$key]['status'] = 'scheduled';
+				}
+			} else {
+				$result[$key]['id_response'] = $response['id_response'];
+				$responseUpdateDate = $response['last_update'];
+				if ($response['status'] == 'draft') {
+					if ($responseUpdateDate > $dueDate) {
+						$result[$key]['status'] = 'working (late)';
 					} else {
-						//check if date is same as current date
-						$date = new DateTime($value['date']);
-
-						$now = new DateTime();
-						if ($date->format('Y-m-d') == $now->format('Y-m-d')) {
-							$result[$key]['status'] = 'working';
-						} else {
-
-							$result[$key]['status'] = 'not started';
-						}
+						$result[$key]['status'] = 'working';
+					}
+				} else if ($response['status'] == 'submit') {
+					if ($responseUpdateDate == $dueDate) {
+						$result[$key]['status'] = 'done';
+					} else if ($responseUpdateDate < $dueDate) {
+						$result[$key]['status'] = 'done early';
+					} else {
+						$result[$key]['status'] = 'done late';
 					}
 				}
 			}
