@@ -200,7 +200,7 @@
 			headerToolbar: {
 				left: 'today prevYear,prev,next,nextYear',
 				center: 'title',
-				right: 'year,month,agendaWeek,agendaDay,dayGridMonth'
+				right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 			},
 			eventClick: function(info) {
 				console.log(info)
