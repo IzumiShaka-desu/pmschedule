@@ -55,7 +55,8 @@ class M_schedules extends CI_Model
 				}
 			} else {
 				$result[$key]['id_response'] = $response['id_response'];
-				$responseUpdateDate = $response['last_update'];
+				//format $responseUpdateDate to Y-m-d
+				$responseUpdateDate = date('Y-m-d', strtotime($response['last_update']));
 
 				if (strtolower($response['status']) == 'draft') {
 					// if responseUpdateDate is past dueDate then status is working (late)
