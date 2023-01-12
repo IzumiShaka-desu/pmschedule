@@ -149,7 +149,7 @@
 		dialogContent += "<div class='row'>";
 		dialogContent += "<div class='col-md-12'>";
 		dialogContent += '<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>';
-		const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule";
+		const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule-" + idSchedule;
 		const base64Path = btoa(rawPath);
 		const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
 
