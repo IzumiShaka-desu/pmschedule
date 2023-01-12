@@ -94,6 +94,7 @@
 	}
 	?>
 	var calendar;
+	var yearlyCalendar;
 
 	function showDialog(idSchedule) {
 		//clear and append detail schedule information on modal
