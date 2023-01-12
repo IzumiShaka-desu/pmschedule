@@ -500,6 +500,43 @@
 		observer.observe(tableView, options)
 	}
 
+	function setupCalendarTabs() {
+		const annualView = document.querySelector("#annual-view")
+		const monthlyVIew = document.querySelector("#monthly-view")
+
+		const options = {
+			attributes: true
+		}
+		$(`#monthly-view`).hide();
+
+		function callback(mutationList, observer) {
+			mutationList.forEach(function(mutation) {
+				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+					// handle class change
+					console.log(mutation.target.className)
+					console.log(mutation.target.id)
+
+					if (mutation.target.className.toString().includes("show") && mutation.target.id == "monthly-view") {
+
+						//show calendar-view and hide table-view
+						$(`#annual-view`).hide();
+						$(`#monthly-view`).show();
+
+					} else {
+						//show table-view and hide calendar-view
+						$(`#annual-view`).show();
+						$(`#monthly-view`).hide();
+
+					}
+				}
+			})
+		}
+
+		const observer = new MutationObserver(callback)
+		observer.observe(annualView, options)
+		observer.observe(monthlyVIew, options)
+	}
+
 	function serialDateToDate(serial) {
 		var utc_days = Math.floor(serial - 25569);
 		var utc_value = utc_days * 86400;
@@ -537,6 +574,7 @@
 		// });
 		setupPreviewScheduleTabs();
 		setupFormScheduleTabs();
+		setupCalendarTabs();
 
 		$('[data-toggle="tooltip"]').tooltip();
 		$("#form-add-schedule").submit(function(e) {

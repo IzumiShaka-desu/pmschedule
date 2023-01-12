@@ -24,6 +24,17 @@
  				<h3 class="block-title">Schedules<small></small></h3>
  			</div>
  			<div class="block-content block-content-full">
+ 				<div class="col-12 text-right" style="margin-bottom: 18px;">
+ 					<!-- create selectable tab item there is calendar icon and table icon, then listen tab item change, when tab item changed console log -->
+ 					<ul class="nav nav-pills nav-pills-alt" data-toggle="tabs" role="tablist">
+ 						<li class="nav-item">
+ 							<a class="nav-link active" href="#annual-view">Year</a>
+ 						</li>
+ 						<li class="nav-item">
+ 							<a class="nav-link" href="#monthly-view">Month</a>
+ 						</li>
+ 					</ul>
+ 				</div>
  				<div class="col-12">
  					<br>
  				</div>
@@ -33,11 +44,12 @@
  					 create whitespace -->
 
  				<!-- </div> -->
- 				<div class="col-12">
+ 				<div id="monthly-view" class="col-12">
  					<br>
  					<div id='calendar'></div>
  				</div>
- 				<div class="col-12">
+ 				<div id="annual-view">
+ 					asdsad
  					<br>
  				</div>
  				<!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
