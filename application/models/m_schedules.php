@@ -58,17 +58,24 @@ class M_schedules extends CI_Model
 				$responseUpdateDate = $response['last_update'];
 
 				if (strtolower($response['status']) == 'draft') {
+					// if responseUpdateDate is past dueDate then status is working (late)
+					// else status is working
 					if ($responseUpdateDate > $dueDate) {
 						$result[$key]['status'] = 'working (late)';
+						$result[$key]['responseDate'] = $responseUpdateDate;
 					} else {
+						$result[$key]['responseDate'] = $responseUpdateDate;
 						$result[$key]['status'] = 'working';
 					}
 				} else if (strtolower($response['status']) == 'submit') {
 					if ($responseUpdateDate == $dueDate) {
+						$result[$key]['responseDate'] = $responseUpdateDate;
 						$result[$key]['status'] = 'done';
 					} else if ($responseUpdateDate < $dueDate) {
+						$result[$key]['responseDate'] = $responseUpdateDate;
 						$result[$key]['status'] = 'done early';
 					} else {
+						$result[$key]['responseDate'] = $responseUpdateDate;
 						$result[$key]['status'] = 'done late';
 					}
 				}
