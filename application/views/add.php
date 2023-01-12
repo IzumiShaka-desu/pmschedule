@@ -23,7 +23,7 @@
 
 				<div class="col-12 text-left" style="margin-bottom: 18px;">
 					<!-- create selectable tab item there is calendar icon and table icon, then listen tab item change, when tab item changed console log -->
-					<ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs" role="tablist">
+					<ul class="nav nav-pills nav-pills-alt" data-toggle="tabs" role="tablist">
 						<li class="nav-item">
 							<a class="nav-link active" href="#form-view">Add</a>
 						</li>
@@ -110,7 +110,7 @@
 			</div>
 			<div class="col-12 text-left" style="margin-bottom: 18px;">
 				<!-- create selectable tab item there is calendar icon and table icon, then listen tab item change, when tab item changed console log -->
-				<ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs" role="tablist">
+				<ul class="nav nav-pills nav-pills-alt" data-toggle="tabs" role="tablist">
 					<li class="nav-item">
 						<a class="nav-link active" href="#table-view">Table</a>
 					</li>
