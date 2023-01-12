@@ -73,7 +73,7 @@
 		//insert every item to calendarEvents
 		foreach ($rawSchedules as $schedule) {
 			//schedule properties: id_schedule,id_checksheet,status,date,priority,description
-			echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
+			echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}',id_response: '{$schedule['id_response']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
 			echo "rawSchedule.push(item);";
 		}
 	}
@@ -166,7 +166,7 @@
 		}
 		// if schedule have id_response the button will redirect to response page with id_response as parameter
 		// if schedule dont have id_response the button will redirect to checksheet page with id_checksheet as parameter
-		if (schedule.id_response != null) {
+		if (schedule.id_response != undefined) {
 			const rawPath = "dashboard/viewResponseData?id=" + schedule.id_response + "&note=from-schedule-" + idSchedule;
 			const base64Path = btoa(rawPath);
 			const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
