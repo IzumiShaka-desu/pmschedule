@@ -225,7 +225,7 @@
 	function refreshYearlyCalendar() {
 		var calendarEl = $('#yearlyCalendar');
 
-		yearlyCalendar = new FcYear(yearlyCalendar, (info) => {
+		yearlyCalendar = new FcYear(calendarEl, (info) => {
 				console.log(info)
 			},
 			calendarEvents.concat(dataTableRows.map((row) => {
