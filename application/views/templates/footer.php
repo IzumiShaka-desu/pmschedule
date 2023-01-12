@@ -427,114 +427,126 @@
 	}
 
 	function setupFormScheduleTabs() {
-		const formView = document.querySelector("#form-view")
-		const importView = document.querySelector("#import-view")
+		try {
+			const formView = document.querySelector("#form-view")
+			const importView = document.querySelector("#import-view")
 
-		const options = {
-			attributes: true
-		}
-		$(`#import-view`).hide();
+			const options = {
+				attributes: true
+			}
+			$(`#import-view`).hide();
 
-		function callback(mutationList, observer) {
-			mutationList.forEach(function(mutation) {
-				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-					// handle class change
-					console.log(mutation.target.className)
-					console.log(mutation.target.id)
+			function callback(mutationList, observer) {
+				mutationList.forEach(function(mutation) {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+						// handle class change
+						console.log(mutation.target.className)
+						console.log(mutation.target.id)
 
-					if (mutation.target.className.toString().includes("show") && mutation.target.id == "import-view") {
+						if (mutation.target.className.toString().includes("show") && mutation.target.id == "import-view") {
 
-						//show calendar-view and hide table-view
-						$(`#form-view`).hide();
-						$(`#import-view`).show();
+							//show calendar-view and hide table-view
+							$(`#form-view`).hide();
+							$(`#import-view`).show();
 
-					} else {
-						//show table-view and hide calendar-view
-						$(`#form-view`).show();
-						$(`#import-view`).hide();
+						} else {
+							//show table-view and hide calendar-view
+							$(`#form-view`).show();
+							$(`#import-view`).hide();
 
+						}
 					}
-				}
-			})
-		}
+				})
+			}
 
-		const observer = new MutationObserver(callback)
-		observer.observe(importView, options)
-		observer.observe(formView, options)
+			const observer = new MutationObserver(callback)
+			observer.observe(importView, options)
+			observer.observe(formView, options)
+		} catch (e) {
+			console.log(e)
+		}
 	}
 
 	function setupPreviewScheduleTabs() {
-		const tableView = document.querySelector("#table-view")
-		const calendarView = document.querySelector("#calendar-view")
+		try {
+			const tableView = document.querySelector("#table-view")
+			const calendarView = document.querySelector("#calendar-view")
 
-		const options = {
-			attributes: true
-		}
-		$(`#calendar-view`).hide();
+			const options = {
+				attributes: true
+			}
+			$(`#calendar-view`).hide();
 
-		function callback(mutationList, observer) {
-			mutationList.forEach(function(mutation) {
-				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-					// handle class change
-					console.log(mutation.target.className)
-					console.log(mutation.target.id)
+			function callback(mutationList, observer) {
+				mutationList.forEach(function(mutation) {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+						// handle class change
+						console.log(mutation.target.className)
+						console.log(mutation.target.id)
 
-					if (mutation.target.className.toString().includes("show") && mutation.target.id == "calendar-view") {
+						if (mutation.target.className.toString().includes("show") && mutation.target.id == "calendar-view") {
 
-						//show calendar-view and hide table-view
-						$(`#calendar-view`).show();
-						$(`#table-view`).hide();
+							//show calendar-view and hide table-view
+							$(`#calendar-view`).show();
+							$(`#table-view`).hide();
 
-					} else {
-						//show table-view and hide calendar-view
-						$(`#calendar-view`).hide();
-						$(`#table-view`).show();
+						} else {
+							//show table-view and hide calendar-view
+							$(`#calendar-view`).hide();
+							$(`#table-view`).show();
 
+						}
 					}
-				}
-			})
-		}
+				})
+			}
 
-		const observer = new MutationObserver(callback)
-		observer.observe(calendarView, options)
-		observer.observe(tableView, options)
+			const observer = new MutationObserver(callback)
+			observer.observe(calendarView, options)
+			observer.observe(tableView, options)
+		} catch (e) {
+			console.log(e)
+		}
 	}
 
 	function setupCalendarTabs() {
-		const annualView = document.querySelector("#annual-view")
-		const monthlyVIew = document.querySelector("#monthly-view")
+		try {
+			const annualView = document.querySelector("#annual-view")
+			const monthlyVIew = document.querySelector("#monthly-view")
 
-		const options = {
-			attributes: true
-		}
-		$(`#monthly-view`).hide();
+			const options = {
+				attributes: true
+			}
+			$(`#monthly-view`).hide();
 
-		function callback(mutationList, observer) {
-			mutationList.forEach(function(mutation) {
-				if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-					// handle class change
-					console.log(mutation.target.className)
-					console.log(mutation.target.id)
+			function callback(mutationList, observer) {
+				mutationList.forEach(function(mutation) {
+					if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+						// handle class change
+						console.log(mutation.target.className)
+						console.log(mutation.target.id)
 
-					if (mutation.target.className.toString().includes("show") && mutation.target.id == "monthly-view") {
+						if (mutation.target.className.toString().includes("show") && mutation.target.id == "monthly-view") {
 
-						//show calendar-view and hide table-view
-						$(`#annual-view`).hide();
-						$(`#monthly-view`).show();
+							//show calendar-view and hide table-view
+							$(`#annual-view`).hide();
+							$(`#monthly-view`).show();
 
-					} else {
-						//show table-view and hide calendar-view
-						$(`#annual-view`).show();
-						$(`#monthly-view`).hide();
+						} else {
+							//show table-view and hide calendar-view
+							$(`#annual-view`).show();
+							$(`#monthly-view`).hide();
 
+						}
 					}
-				}
-			})
-		}
+				})
+			}
 
-		const observer = new MutationObserver(callback)
-		observer.observe(annualView, options)
-		observer.observe(monthlyVIew, options)
+			const observer = new MutationObserver(callback)
+			observer.observe(annualView, options)
+			observer.observe(monthlyVIew, options)
+		} catch (e) {
+			console.log(e)
+		}
 	}
 
 	function serialDateToDate(serial) {
