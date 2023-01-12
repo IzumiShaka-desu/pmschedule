@@ -106,7 +106,7 @@ class FcYear {
 	renderHtml() {
 		this.renderToolbar();
 		this.renderBody();
-		this.element.innerHTML = this.toolbar + this.body;
+		this.element.html(this.toolbar + this.body);
 	}
 
 	renderContent() {
