@@ -52,8 +52,6 @@
 <script src="assets/js/pages/be_tables_datatables.min.js"></script>
 <script src="assets/js/xlsx.full.min.js"></script>
 <script src='assets/js/fullcalendar-6.0.2/dist/index.global.js'></script>
-<!-- import assets/js/fc.js -->
-<script src="assets/js/fc.js"></script>
 
 
 <script>
@@ -209,7 +207,7 @@
 					start: row.date,
 				}
 			})),
-			header: {
+			headerToolbar: {
 				left: 'year,month,agendaWeek,agendaDay',
 				center: 'title',
 				right: 'today prevYear,prev,next,nextYear'
