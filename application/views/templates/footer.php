@@ -73,7 +73,11 @@
 		//insert every item to calendarEvents
 		foreach ($rawSchedules as $schedule) {
 			//schedule properties: id_schedule,id_checksheet,status,date,priority,description
-			echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}',id_response: '{$schedule['id_response']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
+			if (!empty($schedule['id_response'])) {
+				echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}',id_response: '{$schedule['id_response']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
+			} else {
+				echo "var item = {id: '{$schedule['id_schedule']}', id_checksheet: '{$schedule['id_checksheet']}', status: '{$schedule['status']}', date: '{$schedule['date']}', priority: '{$schedule['priority']}', description: '{$schedule['description']}'};";
+			}
 			echo "rawSchedule.push(item);";
 		}
 	}
