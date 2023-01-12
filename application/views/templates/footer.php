@@ -606,6 +606,7 @@
 		setupPreviewScheduleTabs();
 		setupFormScheduleTabs();
 		setupCalendarTabs();
+		refreshYearlyCalendar();
 
 		$('[data-toggle="tooltip"]').tooltip();
 		$("#form-add-schedule").submit(function(e) {
