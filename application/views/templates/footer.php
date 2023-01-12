@@ -196,9 +196,9 @@
 			// plugins: ['interaction', 'dayGrid', 'timeGrid'],
 			initialView: 'dayGridMonth',
 			header: {
-				left: 'prev,next today',
+				left: 'today prevYear,prev,next,nextYear',
 				center: 'title',
-				right: 'dayGridMonth,timeGridWeek,timeGridDay'
+				right: 'year,month,agendaWeek,agendaDay'
 			},
 			eventClick: function(info) {
 				console.log(info)
