@@ -223,7 +223,7 @@
 	}
 
 	function refreshYearlyCalendar() {
-		var calendarEl = document.getElementById('yearlyCalendar');
+		var calendarEl = $('#yearlyCalendar');
 
 		yearlyCalendar = new FcYear(yearlyCalendar, (info) => {
 				console.log(info)
