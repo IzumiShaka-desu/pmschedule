@@ -236,7 +236,7 @@
 			})),
 		);
 
-		yearlyCalendar.renderBody();
+		yearlyCalendar.renderHtml();
 	}
 
 
