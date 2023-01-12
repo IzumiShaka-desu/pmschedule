@@ -56,13 +56,14 @@ class M_schedules extends CI_Model
 			} else {
 				$result[$key]['id_response'] = $response['id_response'];
 				$responseUpdateDate = $response['last_update'];
-				if ($response['status'] == 'draft') {
+
+				if (strtolower($response['status']) == 'draft') {
 					if ($responseUpdateDate > $dueDate) {
 						$result[$key]['status'] = 'working (late)';
 					} else {
 						$result[$key]['status'] = 'working';
 					}
-				} else if ($response['status'] == 'submit') {
+				} else if (strtolower($response['status']) == 'submit') {
 					if ($responseUpdateDate == $dueDate) {
 						$result[$key]['status'] = 'done';
 					} else if ($responseUpdateDate < $dueDate) {
