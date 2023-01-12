@@ -3,6 +3,8 @@ class FcYear {
 	constructor(element, onDayClicked, events) {
 		this.element = element;
 		//get current year
+		this.toolbar = "";
+		this.body = "";
 		let newEvents = [];
 		this.calendars = [];
 		//iterate and makesure every start property in events is instance of date
@@ -59,22 +61,21 @@ class FcYear {
 		this.render();
 	}
 
-	renderBody() {
-		this.element.empty();
+	renderToolbar() {
 		// 	create button previous year in left, create title in center, create button next year in right
-		this.element.append(`
-			<div class="row">
-				<div class="col-sm-4">
-					<button id="prev-year" class="btn btn-primary">Prev Year</button>
-				</div>
-				<div class="col-sm-4">
-					<h1>${this.year}</h1>
-				</div>
-				<div class="col-sm-4">
-					<button id="next-year" class="btn btn-primary">Next Year</button>
-				</div>
-			</div>
-			`);
+		this.toolbar = (`
+	<div class="row">
+		<div class="col-sm-4">
+			<button id="prev-year" class="btn btn-primary">Prev Year</button>
+		</div>
+		<div class="col-sm-4">
+			<h1>${this.year}</h1>
+		</div>
+		<div class="col-sm-4">
+			<button id="next-year" class="btn btn-primary">Next Year</button>
+		</div>
+	</div>
+	`);
 		//add event listener to button
 		$('#prev-year').on("click", () => {
 			this.goToPrevYear();
@@ -82,26 +83,36 @@ class FcYear {
 		$('#next-year').on("click", () => {
 			this.goToNextYear();
 		});
+	}
+
+	renderBody() {
 		//create 3 column for month using bootstrap grid
-		this.element.append('<div class= "container">');
+		let htmlBody = "";
+		htmlBody += ('<div class= "container">');
 		for (var rowIndex = 0; rowIndex < 4; rowIndex++) {
-			this.element.append('<div class="row">');
+			htmlBody += ('<div class="row">');
 			for (var columnIndex = 0; columnIndex < 3; columnIndex++) {
-				this.element.append(`
+				htmlBody += (`
 					<div class="col-sm">
 						<div id="calendar-${(columnIndex + (rowIndex * 3))}"></div>
 					</div>
 					`);
 			}
-			this.element.append('</div>');
+			htmlBody += ('</div>');
 		}
-		this.element.append('</div>');
+		htmlBody += ('</div>');
+		this.body = htmlBody;
+	}
+	renderHtml() {
+		this.renderToolbar();
+		this.renderBody();
+		this.element.innerHTML = this.toolbar + this.body;
 	}
 
 	renderContent() {
 		if (!this.rendering) {
 			this.rendering = true;
-
+			this.renderHtml();
 			//create calendar for each month
 			for (var monthIndex = 0; monthIndex < 12; monthIndex++) {
 				//get events this years by month map per day
