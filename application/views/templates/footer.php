@@ -193,56 +193,31 @@
 
 	function refreshCalendar() {
 		var calendarEl = document.getElementById('calendar');
-		var calendar = $('#calendar').fullCalendar({
-			// events: [
-			// 	{
-			// 		title  : 'Testevent',
-			// 		start  : '2019-01-26',
-			// 		allDay : true
-			// 	}
-			// ],
+
+		calendar = new FullCalendar.Calendar(calendarEl, {
+			// plugins: ['interaction', 'dayGrid', 'timeGrid'],
+			initialView: 'dayGridMonth',
+			headerToolbar: {
+				left: 'today prevYear,prev,next,nextYear',
+				center: 'title',
+				right: 'year,month,agendaWeek,agendaDay,dayGridMonth'
+			},
+			eventClick: function(info) {
+				console.log(info)
+				console.log(info.event)
+				console.log(info.event._def.publicId)
+				showDialog(info.event._def.publicId);
+
+			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 				return {
 					title: row.desc,
 					start: row.date,
 				}
 			})),
-			headerToolbar: {
-				left: 'year,month,agendaWeek,agendaDay',
-				center: 'title',
-				right: 'today prevYear,prev,next,nextYear'
-			},
-			height: 'auto',
-			bootstrap: false,
-			defaultView: 'year',
-			editable: true,
-			eventLimit: true,
-			selectable: true
 		});
-		// calendar = new FullCalendar.Calendar(calendarEl, {
-		// 	// plugins: ['interaction', 'dayGrid', 'timeGrid'],
-		// 	initialView: 'dayGridMonth',
-		// 	header: {
-		// 		left: 'today prevYear,prev,next,nextYear',
-		// 		center: 'title',
-		// 		right: 'year,month,agendaWeek,agendaDay'
-		// 	},
-		// 	eventClick: function(info) {
-		// 		console.log(info)
-		// 		console.log(info.event)
-		// 		console.log(info.event._def.publicId)
-		// 		showDialog(info.event._def.publicId);
 
-		// 	},
-		// 	events: calendarEvents.concat(dataTableRows.map((row) => {
-		// 		return {
-		// 			title: row.desc,
-		// 			start: row.date,
-		// 		}
-		// 	})),
-		// });
-
-		// calendar.render();
+		calendar.render();
 	}
 
 
