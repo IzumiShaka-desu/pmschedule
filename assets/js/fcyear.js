@@ -45,6 +45,7 @@ class FcYear {
 			map.get(day).push(event);
 		}
 		);
+		return map;
 	}
 
 	goToNextYear() {
