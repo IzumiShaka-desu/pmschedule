@@ -4,6 +4,7 @@ class FcYear {
 		this.element = element;
 		//get current year
 		let newEvents = [];
+		this.calendars = [];
 		//iterate and makesure every start property in events is instance of date
 		events.forEach((event) => {
 			if (event.start instanceof Date) {
@@ -115,18 +116,18 @@ class FcYear {
 				//create calendar
 
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
-				var calendar = new FullCalendar.Calendar(calendarEl, {
+				this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
 					plugins: ['dayGrid'],
 					defaultView: 'dayGridMonth', // change default view to dayGridMonth
 					locale: 'id',
 					headerToolbar: {
 						center: 'title',
 					},
+					initialDate: this.year + '-' + (monthIndex + 1) + '-01',
 					events: events,
 					eventClick: (info) => {
 						this.onDayClicked(info);
 					},
-
 				});
 				this.rendering = false;
 			}
