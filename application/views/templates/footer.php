@@ -128,15 +128,21 @@
 		}
 		dialogContent += "</p>";
 
-		//show status as flag if not started is red, if working is yellow, if done is green
+		//show status as flag if contains missing is red, if contains scheduled is blue light,if contains working yellow, if done early is green, if done is blue, if done late is red light 
 		dialogContent += "<p class='font-size-sm text-muted'>Status</p>";
 		dialogContent += "<p class='font-size-sm text-muted'>";
-		if (schedule.status == "not started") {
-			dialogContent += "<span class='badge badge-danger'>Not Started</span>";
-		} else if (schedule.status == "working") {
+		if (schedule.status == "missing") {
+			dialogContent += "<span class='badge badge-danger'>Missing</span>";
+		} else if (schedule.status == "scheduled") {
+			dialogContent += "<span class='badge badge-info'>Scheduled</span>";
+		} else if (schedule.status.contains("working")) {
 			dialogContent += "<span class='badge badge-warning'>Working</span>";
+		} else if (schedule.status == "done early") {
+			dialogContent += "<span class='badge badge-success'>Done Early</span>";
 		} else if (schedule.status == "done") {
-			dialogContent += "<span class='badge badge-success'>Done</span>";
+			dialogContent += "<span class='badge badge-primary'>Done</span>";
+		} else if (schedule.status == "done late") {
+			dialogContent += "<span class='badge badge-danger'>Done Late</span>";
 		}
 		dialogContent += "</p>";
 
