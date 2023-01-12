@@ -49,8 +49,8 @@
  					<div id='calendar'></div>
  				</div>
  				<div id="annual-view">
- 					asdsad
  					<br>
+ 					<div id='yearlyCalendar'></div>
  				</div>
  				<!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
 
