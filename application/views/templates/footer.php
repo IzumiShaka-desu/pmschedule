@@ -52,6 +52,8 @@
 <script src="assets/js/pages/be_tables_datatables.min.js"></script>
 <script src="assets/js/xlsx.full.min.js"></script>
 <script src='assets/js/fullcalendar-6.0.2/dist/index.global.js'></script>
+<!-- import assets/js/fcyear.js -->
+<script src="assets/js/fcyear.js"></script>
 
 
 <script>
@@ -218,6 +220,23 @@
 		});
 
 		calendar.render();
+	}
+
+	function refreshYearlyCalendar() {
+		var calendarEl = document.getElementById('yearlyCalendar');
+
+		yearlyCalendar = new FcYear(yearlyCalendar, (info) => {
+				console.log(info)
+			},
+			calendarEvents.concat(dataTableRows.map((row) => {
+				return {
+					title: row.desc,
+					start: row.date,
+				}
+			})),
+		);
+
+		yearlyCalendar.render();
 	}
 
 
