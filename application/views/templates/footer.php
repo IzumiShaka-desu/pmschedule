@@ -135,7 +135,7 @@
 			dialogContent += "<span class='badge badge-danger'>Missing</span>";
 		} else if (schedule.status == "scheduled") {
 			dialogContent += "<span class='badge badge-info'>Scheduled</span>";
-		} else if (schedule.status.contains("working")) {
+		} else if (schedule.status.includes("working")) {
 			dialogContent += "<span class='badge badge-warning'>Working</span>";
 		} else if (schedule.status == "done early") {
 			dialogContent += "<span class='badge badge-success'>Done Early</span>";
