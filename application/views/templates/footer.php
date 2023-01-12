@@ -155,12 +155,29 @@
 		dialogContent += "<div class='row'>";
 		dialogContent += "<div class='col-md-12'>";
 		dialogContent += '<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>';
-		const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule-" + idSchedule;
-		const base64Path = btoa(rawPath);
-		const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
-
-		const base64url = btoa(rawUrl);
-		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>Open Checksheet</a>";
+		var base64url;
+		var buttonTitle = "Open Checksheet";
+		// if schedule status is contains working, then button title is "Open Checksheet (Draft)"
+		// is schedule status is done, then button title is "Open Checksheet (Readonly)"
+		if (schedule.status.includes("working")) {
+			buttonTitle = "Open Checksheet (Draft)";
+		} else if (schedule.status == "done") {
+			buttonTitle = "Open Checksheet (Readonly)";
+		}
+		// if schedule have id_response the button will redirect to response page with id_response as parameter
+		// if schedule dont have id_response the button will redirect to checksheet page with id_checksheet as parameter
+		if (schedule.id_response != undefined) {
+			const rawPath = "dashboard/viewResponseData?id=" + schedule.id_response + "&note=from-schedule-" + idSchedule;
+			const base64Path = btoa(rawPath);
+			const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
+			base64url = btoa(rawUrl);
+		} else {
+			const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule-" + idSchedule;
+			const base64Path = btoa(rawPath);
+			const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
+			base64url = btoa(rawUrl);
+		}
+		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>" + buttonTitle + "</a>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
 		dialogContent += "</div>";
