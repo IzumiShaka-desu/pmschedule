@@ -101,7 +101,7 @@ class FcYear {
 				var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
 				//convert map to array of events
 				var events = [];
-				for (let [key, value] of map) {
+				for (let [key, value] of rawEvents) {
 					events.push({
 						title: value.length + ' event',
 						start: this.year + '-' + (monthIndex + 1) + '-' + key,
