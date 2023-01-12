@@ -3,7 +3,21 @@ class FcYear {
 	constructor(element, onDayClicked, events) {
 		this.element = element;
 		//get current year
-		this.events = events;
+		let newEvents = [];
+		//iterate and makesure every start property in events is instance of date
+		events.forEach((event) => {
+			if (event.start instanceof Date) {
+				newEvents.push(event);
+			} else {
+				newEvents.push({
+					...event,
+					start: new Date(event.start)
+				});
+			}
+		});
+
+
+		this.events = newEvents;
 		this.year = new Date().getFullYear();
 		this.onDayClicked = (info) => {
 			onDayClicked(info);
