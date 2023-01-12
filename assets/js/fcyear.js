@@ -101,7 +101,7 @@ class FcYear {
 				var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
 				//convert map to array of events
 				var events = [];
-				rawEvents.forEach((value, key) => {
+				for (let [key, value] of map) {
 					events.push({
 						title: value.length + ' event',
 						start: this.year + '-' + (monthIndex + 1) + '-' + key,
@@ -109,7 +109,7 @@ class FcYear {
 						display: 'background',
 						events: value
 					});
-				});
+				};
 
 				//create calendar
 
