@@ -139,7 +139,7 @@ class FcYear {
 				title: value.length + ' schedules',
 				start: dateString,
 				allDay: true,
-				textColor: '#000000',
+				textColor: '#ffffff',
 				backgroundColor: backgroundColor,
 				display: 'background',
 				events: value
