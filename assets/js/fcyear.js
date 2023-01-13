@@ -151,13 +151,17 @@ class FcYear {
 						headerToolbar: {
 							center: 'title',
 						},
-						initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
+						// initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
 						events: events,
 						eventClick: (info) => {
 							this.onDayClicked(info);
 						},
 					});
 					this.calendars[monthIndex].render();
+					var dateString = this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01';
+					console.log(`go to date ${dateString}`);
+
+					this.calendars[monthIndex].gotoDate(dateString);
 
 				} catch (e) {
 					console.log(e);
