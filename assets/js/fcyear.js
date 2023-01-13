@@ -102,6 +102,8 @@ class FcYear {
 		this.renderBody();
 		this.element.html(this.toolbar + this.body);
 		//add event listener to button
+		let goToPrevYear = this.goToPrevYear.bind(this);
+		let goToNextYear = this.goToNextYear.bind(this);
 		document.getElementById("prev-year").addEventListener('click', function () {
 			goToPrevYear();
 		});
