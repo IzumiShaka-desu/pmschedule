@@ -76,13 +76,7 @@ class FcYear {
 		</div>
 	</div>
 	`);
-		//add event listener to button
-		document.getElementById("prev-year").addEventListener('click', function () {
-			this.goToPrevYear();
-		});
-		document.getElementById("next-year").addEventListener('click', function () {
-			this.goToNextYear();
-		});
+
 	}
 
 	renderBody() {
@@ -107,6 +101,13 @@ class FcYear {
 		this.renderToolbar();
 		this.renderBody();
 		this.element.html(this.toolbar + this.body);
+		//add event listener to button
+		document.getElementById("prev-year").addEventListener('click', function () {
+			this.goToPrevYear();
+		});
+		document.getElementById("next-year").addEventListener('click', function () {
+			this.goToNextYear();
+		});
 	}
 
 	renderContent() {
