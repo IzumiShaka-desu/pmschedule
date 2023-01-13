@@ -157,10 +157,11 @@ class FcYear {
 							this.onDayClicked(info);
 						},
 					});
+					this.calendars[monthIndex].render();
+
 				} catch (e) {
 					console.log(e);
 				}
-				this.calendars[monthIndex].render();
 				this.rendering = false;
 			}
 		}
