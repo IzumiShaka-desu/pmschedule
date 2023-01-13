@@ -89,12 +89,12 @@ class FcYear {
 		//create 3 column for month using bootstrap grid
 		let htmlBody = "";
 		htmlBody += ('<div class= "container">');
-		for (var rowIndex = 0; rowIndex < 4; rowIndex++) {
+		for (var rowIndex = 0; rowIndex < 6; rowIndex++) {
 			htmlBody += ('<div class="row">');
-			for (var columnIndex = 0; columnIndex < 3; columnIndex++) {
+			for (var columnIndex = 0; columnIndex < 2; columnIndex++) {
 				htmlBody += (`
 					<div class="col-sm">
-						<div id="calendar-${(columnIndex + (rowIndex * 3))}"></div>
+						<div id="calendar-${(columnIndex + (rowIndex * 2))}"></div>
 					</div>
 					`);
 			}
@@ -130,12 +130,23 @@ class FcYear {
 				};
 
 				//create calendar
-
+				// var calendar1= new FullCalendar.Calendar(callel1,{
+				// 	initialDate:"2023-02-01",
+				// 	// plugins: ['dayGrid'],
+				// 	// defaultView: 'dayGridMo¿nth', 
+				// 	events:[
+				// 		{
+				// 			title:"5 events",
+				// 			start:"2023-02-01"
+				// 		}
+				// 		]
+				// }
+				// );
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
 				this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
-					plugins: ['dayGrid'],
-					defaultView: 'dayGridMonth', // change default view to dayGridMonth
-					locale: 'id',
+					// plugins: ['dayGrid'],
+					// defaultView: 'dayGridMonth', // change default view to dayGridMonth
+					// locale: 'id',
 					headerToolbar: {
 						center: 'title',
 					},
