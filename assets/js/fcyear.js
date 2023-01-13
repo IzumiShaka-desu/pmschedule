@@ -122,7 +122,7 @@ class FcYear {
 				for (let [key, value] of rawEvents) {
 					events.push({
 						title: value.length + ' event',
-						start: this.year + '-' + (monthIndex + 1) + '-' + key,
+						start: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-' + key,
 						allDay: true,
 						display: 'background',
 						events: value
