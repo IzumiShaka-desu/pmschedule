@@ -212,8 +212,8 @@
 		dialogContent += "<table class='table table-sm table-bordered'>";
 		dialogContent += "<thead>";
 		dialogContent += "<tr>";
-		dialogContent += "<th>Checksheet</th>";
-		dialogContent += "<th>Location</th>";
+		dialogContent += "<th>Schedule Description</th>";
+		dialogContent += "<th>Date</th>";
 		dialogContent += "<th>Priority</th>";
 		dialogContent += "<th>Status</th>";
 		dialogContent += "<th>Action</th>";
@@ -223,8 +223,8 @@
 		//looping detail events
 		detailEvents.forEach((detailEvent) => {
 			dialogContent += "<tr>";
-			dialogContent += "<td>" + detailEvent.title + "</td>";
-			dialogContent += "<td>" + detailEvent.location + "</td>";
+			dialogContent += "<td>" + detailEvent.description + "</td>";
+			dialogContent += "<td>" + detailEvent.date + "</td>";
 			dialogContent += "<td>";
 			if (detailEvent.priority == "high") {
 				dialogContent += "<span class='badge badge-danger'>High</span>";
