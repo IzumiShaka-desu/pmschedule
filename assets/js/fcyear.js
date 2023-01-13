@@ -112,6 +112,42 @@ class FcYear {
 		});
 	}
 
+	getEventsRecapByMonth(month) {
+		var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
+		//convert map to array of events
+		var events = [];
+
+		for (let [key, value] of rawEvents) {
+			var dateString = `${yearlyCalendar.year}`
+				+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `${key}`;
+			var backgroundColor;
+			// if all events is done or done early, set background color to green
+			// else if all events is any missing status, set background color to red
+			// else if all events is any done late status, or draft, set background color to yellow
+			// else set background color to blue
+			if (value.every((event) => event.status == 'done' || event.status == 'done early')) {
+				backgroundColor = '#5cb85c';
+			} else if (value.some((event) => event.status == 'missing')) {
+				backgroundColor = '#d9534f';
+			} else if (value.some((event) => event.status == 'done late' || event.status == 'draft')) {
+				backgroundColor = '#f0ad4e';
+			} else {
+				backgroundColor = '#337ab7';
+			}
+
+			events.push({
+				title: value.length + ' schedules',
+				start: dateString,
+				allDay: true,
+				eventTextColor: '#000',
+				backgroundColor: backgroundColor,
+				display: 'background',
+				events: value
+			});
+		};
+		return events;
+	}
+
 	renderContent() {
 		if (!this.rendering) {
 			this.rendering = true;
@@ -119,51 +155,7 @@ class FcYear {
 			//create calendar for each month
 			for (var monthIndex = 0; monthIndex < 12; monthIndex++) {
 				//get events this years by month map per day
-				var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
-				//convert map to array of events
-				var events = [];
-
-				for (let [key, value] of rawEvents) {
-					var dateString = `${yearlyCalendar.year}`
-						+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `${key}`;
-					var backgroundColor;
-					// if all events is done or done early, set background color to green
-					// else if all events is any missing status, set background color to red
-					// else if all events is any done late status, or draft, set background color to yellow
-					// else set background color to blue
-					if (value.every((event) => event.status == 'done' || event.status == 'done early')) {
-						backgroundColor = '#5cb85c';
-					} else if (value.some((event) => event.status == 'missing')) {
-						backgroundColor = '#d9534f';
-					} else if (value.some((event) => event.status == 'done late' || event.status == 'draft')) {
-						backgroundColor = '#f0ad4e';
-					} else {
-						backgroundColor = '#337ab7';
-					}
-
-					events.push({
-						title: value.length + ' schedules',
-						start: dateString,
-						allDay: true,
-						eventTextColor: '#000',
-						backgroundColor: backgroundColor,
-						display: 'background',
-						events: value
-					});
-				};
-
-				//create calendar
-				// var calendar1= new FullCalendar.Calendar(callel1,{
-				// 	initialDate:"2023-02-01",
-				// 	// plugins: ['dayGrid'],
-				// 	// defaultView: 'dayGridMo¿nth', 
-				// 	events:[
-				// 		{
-				// 			title:"5 events",
-				// 			start:"2023-02-01"
-				// 		}
-				// 		]
-				// }
+				var events = this.getEventsRecapByMonth(monthIndex);
 				// );
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
 				try {
