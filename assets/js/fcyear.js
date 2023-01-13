@@ -127,7 +127,7 @@ class FcYear {
 					var dateString = `${yearlyCalendar.year}`
 						+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `${key}`;
 					events.push({
-						title: value.length + ' event',
+						title: value.length + ' schedules',
 						start: dateString,
 						allDay: true,
 						display: 'background',
