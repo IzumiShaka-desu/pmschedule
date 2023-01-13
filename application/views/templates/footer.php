@@ -229,6 +229,7 @@
 		yearlyCalendar = new FcYear(calendarEl, (info) => {
 				console.log(info)
 				console.log(info.event);
+
 				console.log(info.event.start);
 				let splitDate = info.event.start.toISOString().split("T")[0].split("-");
 				//splitDate[2] to integer and add 1
@@ -236,18 +237,19 @@
 				let dateString = splitDate[0] + "-" + splitDate[1] + "-" + splitDate[2];
 				console.log(dateString);
 				// click <a  href="#monthly-view">
-				$("a[href='#monthly-view']").click()
+				// $("a[href='#monthly-view']").click()
 				// sleep(500);
-				let delayInMilliseconds = 500; //1 second
-				setTimeout(function() {
-					calendar.goToDate(dateString);
-				}, delayInMilliseconds);
+				// let delayInMilliseconds = 500; //1 second
+				// setTimeout(function() {
+				// calendar.goToDate(dateString);
+				// }, delayInMilliseconds);
 
 			},
 			calendarEvents.concat(dataTableRows.map((row) => {
 				return {
 					title: row.desc,
 					start: row.date,
+					...row,
 				}
 			})),
 		);
