@@ -120,7 +120,7 @@ class FcYear {
 				//convert map to array of events
 				var events = [];
 				var dateString = `${yearlyCalendar.year}`
-					+ '-' + (monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
+					+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
 
 				for (let [key, value] of rawEvents) {
 					events.push({
@@ -148,7 +148,7 @@ class FcYear {
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
 				try {
 					var dateString = `${yearlyCalendar.year}`
-						+ '-' + (monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
+						+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
 					console.log(`go to date ${dateString}`);
 					this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
 						// plugins: ['dayGrid'],
