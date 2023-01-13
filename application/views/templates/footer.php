@@ -246,6 +246,14 @@
 			}
 			dialogContent += "</td>";
 			dialogContent += "<td>";
+			var buttonTitle = "Open Checksheet";
+			// if schedule status is contains working, then button title is "Open Checksheet (Draft)"
+			// is schedule status is done, then button title is "Open Checksheet (Readonly)"
+			if (detailEvent.status.includes("working")) {
+				buttonTitle = "Open Checksheet (Draft)";
+			} else if (detailEvent.status == "done") {
+				buttonTitle = "Open Checksheet (Readonly)";
+			}
 			//if schedule have id_response the button will redirect to response page with id_response as parameter
 			//if schedule dont have id_response the button will redirect to checksheet page with id_checksheet as parameter
 			if (detailEvent.id_response != undefined) {
