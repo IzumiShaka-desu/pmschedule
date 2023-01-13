@@ -132,19 +132,20 @@ class FcYear {
 					// else if all events is any done late status, or draft, set background color to yellow
 					// else set background color to blue
 					if (value.every((event) => event.status == 'done' || event.status == 'done early')) {
-						backgroundColor = 'green';
+						backgroundColor = '#5cb85c';
 					} else if (value.some((event) => event.status == 'missing')) {
-						backgroundColor = 'red';
+						backgroundColor = '#d9534f';
 					} else if (value.some((event) => event.status == 'done late' || event.status == 'draft')) {
-						backgroundColor = 'yellow';
+						backgroundColor = '#f0ad4e';
 					} else {
-						backgroundColor = 'blue';
+						backgroundColor = '#337ab7';
 					}
 
 					events.push({
 						title: value.length + ' schedules',
 						start: dateString,
 						allDay: true,
+						eventTextColor: '#000',
 						backgroundColor: backgroundColor,
 						display: 'background',
 						events: value
