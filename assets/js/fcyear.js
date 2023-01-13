@@ -141,7 +141,7 @@ class FcYear {
 				allDay: true,
 				textColor: '#000000',
 				backgroundColor: backgroundColor,
-				display: 'background',
+				// display: 'background',
 				events: value
 			});
 		};
