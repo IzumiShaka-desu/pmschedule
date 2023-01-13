@@ -54,11 +54,11 @@ class FcYear {
 
 	goToNextYear() {
 		this.year++;
-		this.render();
+		this.renderContent();
 	}
 	goToPrevYear() {
 		this.year--;
-		this.render();
+		this.renderContent();
 	}
 
 	renderToolbar() {
