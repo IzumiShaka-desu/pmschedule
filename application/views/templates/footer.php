@@ -236,13 +236,18 @@
 				splitDate[2] = parseInt(splitDate[2]) + 1;
 				let dateString = splitDate[0] + "-" + splitDate[1] + "-" + splitDate[2];
 				console.log(dateString);
+				//get detail event from raw data then remove undefined value
 				let detailEvents = info.event.extendedProps.events.map((event) => {
 					//get detail event from raw data
 					let detailEvent = dataTableRows.find((row) => {
-						return row.id == event.id;
+						return row.id_schedule == event.id;
 					});
 					return detailEvent;
-				});
+				}).filter((event) => {
+					return event != undefined;
+				})
+
+
 				console.log(detailEvents);
 				// click <a  href="#monthly-view">
 				// $("a[href='#monthly-view']").click()
