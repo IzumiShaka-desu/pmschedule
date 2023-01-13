@@ -194,6 +194,89 @@
 		$('#modalDetail').modal('show');
 	}
 
+	//function to show modal multi detail schedule
+	function showModalMultiDetail(detailEvents) {
+		//clear modal content
+		$("#modalDetail-content").empty();
+		//create modal content
+		var dialogContent = "";
+		dialogContent += "<div class='modal-header'>";
+		dialogContent += "<h5 class='modal-title'>Detail Schedule</h5>";
+		dialogContent += "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>";
+		dialogContent += "<span aria-hidden='true'>&times;</span>";
+		dialogContent += "</button>";
+		dialogContent += "</div>";
+		dialogContent += "<div class='modal-body'>";
+		dialogContent += "<div class='row'>";
+		dialogContent += "<div class='col-md-12'>";
+		dialogContent += "<table class='table table-sm table-bordered'>";
+		dialogContent += "<thead>";
+		dialogContent += "<tr>";
+		dialogContent += "<th>Checksheet</th>";
+		dialogContent += "<th>Location</th>";
+		dialogContent += "<th>Priority</th>";
+		dialogContent += "<th>Status</th>";
+		dialogContent += "<th>Action</th>";
+		dialogContent += "</tr>";
+		dialogContent += "</thead>";
+		dialogContent += "<tbody>";
+		//looping detail events
+		detailEvents.forEach((detailEvent) => {
+			dialogContent += "<tr>";
+			dialogContent += "<td>" + detailEvent.title + "</td>";
+			dialogContent += "<td>" + detailEvent.location + "</td>";
+			dialogContent += "<td>";
+			if (detailEvent.priority == "high") {
+				dialogContent += "<span class='badge badge-danger'>High</span>";
+			} else if (detailEvent.priority == "medium") {
+				dialogContent += "<span class='badge badge-warning'>Medium</span>";
+			} else if (detailEvent.priority == "low") {
+				dialogContent += "<span class='badge badge-success'>Low</span>";
+			}
+			dialogContent += "</td>";
+			dialogContent += "<td>";
+			if (detailEvent.status == "missing") {
+				dialogContent += "<span class='badge badge-danger'>Missing</span>";
+			} else if (detailEvent.status == "scheduled") {
+				dialogContent += "<span class='badge badge-info'>Scheduled</span>";
+			} else if (detailEvent.status.includes("working")) {
+				dialogContent += "<span class='badge badge-warning'>Working</span>";
+			} else if (detailEvent.status == "done") {
+				dialogContent += "<span class='badge badge-success'>Done</span>";
+			}
+			dialogContent += "</td>";
+			dialogContent += "<td>";
+			//if schedule have id_response the button will redirect to response page with id_response as parameter
+			//if schedule dont have id_response the button will redirect to checksheet page with id_checksheet as parameter
+			if (schedule.id_response != undefined) {
+				const rawPath = "response/viewResponseData?id=" + schedule.id_response + "&note=from-schedule-" + idSchedule;
+				const base64Path = btoa(rawPath);
+				const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
+				base64url = btoa(rawUrl);
+			} else {
+				const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule-" + idSchedule;
+				const base64Path = btoa(rawPath);
+				const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
+				base64url = btoa(rawUrl);
+			}
+			dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>" + buttonTitle + "</a>";
+			dialogContent += "</td>";
+			dialogContent += "</tr>";
+		});
+		dialogContent += "</tbody>";
+		dialogContent += "</table>";
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+		dialogContent += "</div>";
+		dialogContent += "<div class='modal-footer'>";
+		dialogContent += "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>";
+		dialogContent += "</div>";
+
+		$("#modalDetail-content").append(dialogContent);
+		$("#modalDetail").modal("show");
+	}
+
+
 	function refreshCalendar() {
 		var calendarEl = document.getElementById('calendar');
 
@@ -698,15 +781,15 @@
 
 
 
-		$('#modal-block-upload').on('show.bs.modal', function(event) {
-			var button = $(event.relatedTarget) // Button that triggered the modal
-			var id = button.data('id') // Extract info from data-* attributes
-			// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-			// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-			var modal = $(this)
-			// modal.find('.modal-title').text('New message to ' + recipient)
-			$('#form-modal-upload').attr('action', '<?php echo base_url('upload/') ?>' + id);
-		})
+		// $('#modal-block-upload').on('show.bs.modal', function(event) {
+		// 	var button = $(event.relatedTarget) // Button that triggered the modal
+		// 	var id = button.data('id') // Extract info from data-* attributes
+		// 	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		// 	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		// 	var modal = $(this)
+		// 	// modal.find('.modal-title').text('New message to ' + recipient)
+		// 	$('#form-modal-upload').attr('action', '<?php echo base_url('upload/') ?>' + id);
+		// })
 
 		$('#file').change(function(e) {
 			var files = e.target.files,
