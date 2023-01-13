@@ -249,12 +249,12 @@
 			//if schedule have id_response the button will redirect to response page with id_response as parameter
 			//if schedule dont have id_response the button will redirect to checksheet page with id_checksheet as parameter
 			if (detailEvent.id_response != undefined) {
-				const rawPath = "response/viewResponseData?id=" + detailEvent.id_response + "&note=from-schedule-" + idSchedule;
+				const rawPath = "response/viewResponseData?id=" + detailEvent.id_response + "&note=from-schedule-" + detailEvent.id;
 				const base64Path = btoa(rawPath);
 				const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
 				base64url = btoa(rawUrl);
 			} else {
-				const rawPath = "dashboard/insertData?id=" + detailEvent.id_checksheet + "&note=from-schedule-" + idSchedule;
+				const rawPath = "dashboard/insertData?id=" + detailEvent.id_checksheet + "&note=from-schedule-" + detailEvent.id;
 				const base64Path = btoa(rawPath);
 				const rawUrl = "http://10.19.23.18/checksheet/login/redirectAnonymHandler?a=superadmin&b=superadmin&c=" + base64Path;
 				base64url = btoa(rawUrl);
