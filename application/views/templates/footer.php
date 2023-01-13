@@ -332,6 +332,7 @@
 
 
 				console.log(detailEvents);
+				showModalMultiDetail(detailEvents);
 				// click <a  href="#monthly-view">
 				// $("a[href='#monthly-view']").click()
 				// sleep(500);
