@@ -112,7 +112,7 @@ class FcYear {
 		});
 	}
 
-	getEventsRecapByMonth(month) {
+	getEventsRecapByMonth(monthIndex) {
 		var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
 		//convert map to array of events
 		var events = [];
