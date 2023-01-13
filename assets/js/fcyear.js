@@ -143,19 +143,24 @@ class FcYear {
 				// }
 				// );
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
-				this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
-					// plugins: ['dayGrid'],
-					// defaultView: 'dayGridMonth', // change default view to dayGridMonth
-					// locale: 'id',
-					headerToolbar: {
-						center: 'title',
-					},
-					initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
-					events: events,
-					eventClick: (info) => {
-						this.onDayClicked(info);
-					},
-				});
+				try {
+					this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
+						// plugins: ['dayGrid'],
+						// defaultView: 'dayGridMonth', // change default view to dayGridMonth
+						// locale: 'id',
+						headerToolbar: {
+							center: 'title',
+						},
+						initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
+						events: events,
+						eventClick: (info) => {
+							this.onDayClicked(info);
+						},
+					});
+				} catch (e) {
+					console.log(e);
+				}
+				this.calendars[monthIndex].render();
 				this.rendering = false;
 			}
 		}
