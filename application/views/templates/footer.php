@@ -235,8 +235,9 @@
 				splitDate[2] = parseInt(splitDate[2]) + 1;
 				let dateString = splitDate[0] + "-" + splitDate[1] + "-" + splitDate[2];
 				console.log(dateString);
-				calendar.goToDate(dateString);
 				$(`#monthly-view`).click();
+				sleep(500);
+				calendar.goToDate(dateString);
 			},
 			calendarEvents.concat(dataTableRows.map((row) => {
 				return {
