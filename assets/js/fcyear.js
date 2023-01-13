@@ -154,7 +154,10 @@ class FcYear {
 						// plugins: ['dayGrid'],
 						// defaultView: 'dayGridMonth', // change default view to dayGridMonth
 						// locale: 'id',
-						headerToolbar: false,
+						headerToolbar: {
+							left: '',
+							right: '',
+						},
 						initialDate: dateString,
 						events: events,
 						eventClick: (info) => {
