@@ -229,7 +229,7 @@
 		yearlyCalendar = new FcYear(calendarEl, (info) => {
 				console.log(info)
 				console.log(info.event);
-
+				console.log(JSON.stringify(info.event.extendedProps.events));
 				console.log(info.event.start);
 				let splitDate = info.event.start.toISOString().split("T")[0].split("-");
 				//splitDate[2] to integer and add 1
