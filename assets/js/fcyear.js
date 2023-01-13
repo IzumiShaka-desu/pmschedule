@@ -157,6 +157,7 @@ class FcYear {
 						headerToolbar: {
 							left: '',
 							right: '',
+							center: 'title'
 						},
 						initialDate: dateString,
 						events: events,
