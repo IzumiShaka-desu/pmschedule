@@ -350,13 +350,14 @@
 				// }, delayInMilliseconds);
 
 			},
-			calendarEvents.concat(dataTableRows.map((row) => {
+			rawSchedule.map((row) => {
 				return {
-					title: row.desc,
-					start: row.date,
 					...row,
+					title: row.description,
+					start: row.date,
+
 				}
-			})),
+			}),
 		);
 
 		yearlyCalendar.renderContent();
