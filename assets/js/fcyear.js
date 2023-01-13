@@ -84,7 +84,7 @@ class FcYear {
 		let htmlBody = "";
 		htmlBody += ('<div class= "container">');
 		for (var rowIndex = 0; rowIndex < 6; rowIndex++) {
-			htmlBody += ('<div class="row">');
+			htmlBody += ('<div class="row" style="margin-top:16px">');
 			for (var columnIndex = 0; columnIndex < 2; columnIndex++) {
 				htmlBody += (`
 					<div class="col-sm">
