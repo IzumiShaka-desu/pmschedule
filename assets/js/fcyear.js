@@ -119,10 +119,13 @@ class FcYear {
 				var rawEvents = this.getThisYearEventsByMonthMapPerDay(monthIndex);
 				//convert map to array of events
 				var events = [];
+				var dateString = `${yearlyCalendar.year}`
+					+ '-' + (monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
+
 				for (let [key, value] of rawEvents) {
 					events.push({
 						title: value.length + ' event',
-						start: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-' + key,
+						start: dateString,
 						allDay: true,
 						display: 'background',
 						events: value
@@ -144,6 +147,9 @@ class FcYear {
 				// );
 				var calendarEl = document.getElementById('calendar-' + monthIndex);
 				try {
+					var dateString = `${yearlyCalendar.year}`
+						+ '-' + (monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + '-01';
+					console.log(`go to date ${dateString}`);
 					this.calendars[monthIndex] = new FullCalendar.Calendar(calendarEl, {
 						// plugins: ['dayGrid'],
 						// defaultView: 'dayGridMonth', // change default view to dayGridMonth
@@ -151,17 +157,16 @@ class FcYear {
 						headerToolbar: {
 							center: 'title',
 						},
-						// initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
+						initialDate: dateString,
 						events: events,
 						eventClick: (info) => {
 							this.onDayClicked(info);
 						},
 					});
 					this.calendars[monthIndex].render();
-					var dateString = this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01';
-					console.log(`go to date ${dateString}`);
+					// console.log(`go to date ${dateString}`);
 
-					this.calendars[monthIndex].gotoDate(dateString);
+					// this.calendars[monthIndex].gotoDate(dateString);
 
 				} catch (e) {
 					console.log(e);
