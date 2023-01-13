@@ -239,7 +239,7 @@
 				//get detail event from raw data then remove undefined value
 				let detailEvents = info.event.extendedProps.events.map((event) => {
 					//get detail event from raw data
-					let detailEvent = dataTableRows.find((row) => {
+					let detailEvent = rawSchedule.find((row) => {
 						return row.id_schedule == event.id;
 					});
 					return detailEvent;
