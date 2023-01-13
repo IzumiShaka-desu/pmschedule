@@ -126,10 +126,26 @@ class FcYear {
 				for (let [key, value] of rawEvents) {
 					var dateString = `${yearlyCalendar.year}`
 						+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `${key}`;
+					var backgroundColor;
+					// if all events is done or done early, set background color to green
+					// else if all events is any missing status, set background color to red
+					// else if all events is any done late status, or draft, set background color to yellow
+					// else set background color to blue
+					if (value.every((event) => event.status == 'done' || event.status == 'done early')) {
+						backgroundColor = 'green';
+					} else if (value.some((event) => event.status == 'missing')) {
+						backgroundColor = 'red';
+					} else if (value.some((event) => event.status == 'done late' || event.status == 'draft')) {
+						backgroundColor = 'yellow';
+					} else {
+						backgroundColor = 'blue';
+					}
+
 					events.push({
 						title: value.length + ' schedules',
 						start: dateString,
 						allDay: true,
+						backgroundColor: backgroundColor,
 						display: 'background',
 						events: value
 					});
