@@ -240,7 +240,7 @@
 				let detailEvents = info.event.extendedProps.events.map((event) => {
 					//get detail event from raw data
 					let detailEvent = rawSchedule.find((row) => {
-						return row.id_schedule == event.id;
+						return row.id == event.id;
 					});
 					return detailEvent;
 				}).filter((event) => {
