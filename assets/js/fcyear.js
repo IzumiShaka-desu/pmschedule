@@ -65,13 +65,13 @@ class FcYear {
 		// 	create button previous year in left, create title in center, create button next year in right
 		this.toolbar = (`
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-sm">
 			<button id="prev-year" class="btn btn-primary">Prev Year</button>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm">
 			<h1>${this.year}</h1>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm">
 			<button id="next-year" class="btn btn-primary">Next Year</button>
 		</div>
 	</div>
