@@ -150,7 +150,7 @@ class FcYear {
 					headerToolbar: {
 						center: 'title',
 					},
-					initialDate: this.year + '-' + (monthIndex + 1) + '-01',
+					initialDate: this.year + '-' + monthIndex < 10 ? `0${(monthIndex + 1)}` : (monthIndex + 1) + '-01',
 					events: events,
 					eventClick: (info) => {
 						this.onDayClicked(info);
