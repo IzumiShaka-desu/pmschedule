@@ -77,10 +77,10 @@ class FcYear {
 	</div>
 	`);
 		//add event listener to button
-		document.getElementById("prev-year") = () => {
+		document.getElementById("prev-year") = function () {
 			this.goToPrevYear();
 		};
-		document.getElementById("prev-year") = () => {
+		document.getElementById("prev-year") = function () {
 			this.goToNextYear();
 		};
 	}
