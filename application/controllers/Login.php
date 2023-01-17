@@ -65,7 +65,7 @@ class Login extends CI_Controller
 				);
 
 				$this->session->set_userdata($data);
-				redirect(base_url('dashboard/'));
+				redirect(base_url(''));
 			}
 		} else // incorrect username or password
 		{
