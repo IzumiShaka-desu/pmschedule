@@ -24,7 +24,7 @@ class Schedule extends CI_Controller
 				'id' => $value['id_schedule'],
 				'title' => $value['description'],
 				'start' => $value['date'],
-				'backgroundColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
+				'status' => $value['status'],
 				'borderColor' => $value['status'] == 'done' ? 'green' : ($value['status'] == 'working' ? 'yellow' : 'red'),
 			];
 		}
