@@ -342,52 +342,56 @@
 	}
 
 	function refreshYearlyCalendar() {
-		var calendarEl = $('#yearlyCalendar');
+		try {
+			var calendarEl = $('#yearlyCalendar');
 
-		yearlyCalendar = new FcYear(calendarEl, (info) => {
-				console.log(info)
-				console.log(info.event);
-				console.log(JSON.stringify(info.event.extendedProps.events));
-				console.log(info.event.start);
-				let splitDate = info.event.start.toISOString().split("T")[0].split("-");
-				//splitDate[2] to integer and add 1
-				splitDate[2] = parseInt(splitDate[2]) + 1;
-				let dateString = splitDate[0] + "-" + splitDate[1] + "-" + splitDate[2];
-				console.log(dateString);
-				//get detail event from raw data then remove undefined value
-				let detailEvents = info.event.extendedProps.events.map((event) => {
-					//get detail event from raw data
-					let detailEvent = rawSchedule.find((row) => {
-						return row.id == event.id;
-					});
-					return detailEvent;
-				}).filter((event) => {
-					return event != undefined;
-				})
+			yearlyCalendar = new FcYear(calendarEl, (info) => {
+					console.log(info)
+					console.log(info.event);
+					console.log(JSON.stringify(info.event.extendedProps.events));
+					console.log(info.event.start);
+					let splitDate = info.event.start.toISOString().split("T")[0].split("-");
+					//splitDate[2] to integer and add 1
+					splitDate[2] = parseInt(splitDate[2]) + 1;
+					let dateString = splitDate[0] + "-" + splitDate[1] + "-" + splitDate[2];
+					console.log(dateString);
+					//get detail event from raw data then remove undefined value
+					let detailEvents = info.event.extendedProps.events.map((event) => {
+						//get detail event from raw data
+						let detailEvent = rawSchedule.find((row) => {
+							return row.id == event.id;
+						});
+						return detailEvent;
+					}).filter((event) => {
+						return event != undefined;
+					})
 
 
-				console.log(detailEvents);
-				showModalMultiDetail(detailEvents);
-				// click <a  href="#monthly-view">
-				// $("a[href='#monthly-view']").click()
-				// sleep(500);
-				// let delayInMilliseconds = 500; //1 second
-				// setTimeout(function() {
-				// calendar.goToDate(dateString);
-				// }, delayInMilliseconds);
+					console.log(detailEvents);
+					showModalMultiDetail(detailEvents);
+					// click <a  href="#monthly-view">
+					// $("a[href='#monthly-view']").click()
+					// sleep(500);
+					// let delayInMilliseconds = 500; //1 second
+					// setTimeout(function() {
+					// calendar.goToDate(dateString);
+					// }, delayInMilliseconds);
 
-			},
-			rawSchedule.map((row) => {
-				return {
-					...row,
-					title: row.description,
-					start: row.date,
+				},
+				rawSchedule.map((row) => {
+					return {
+						...row,
+						title: row.description,
+						start: row.date,
 
-				}
-			}),
-		);
+					}
+				}),
+			);
 
-		yearlyCalendar.renderContent();
+			yearlyCalendar.renderContent();
+		} catch (e) {
+			console.log(e);
+		}
 	}
 
 
