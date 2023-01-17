@@ -10,10 +10,10 @@
 		</div>
 	</div>
 	<div class="content">
-		<h2 class="content-heading">Documents Management</h2>
+		<h2 class="content-heading">Schedules Management</h2>
 		<div class="block">
 			<div class="block-header block-header-default">
-				<h3 class="block-title">Documents<small></small></h3>
+				<h3 class="block-title">Schedules<small></small></h3>
 			</div>
 			<div class="block-content block-content-full">
 				<!-- create input file and button with label "load" to triggering function to load excel using xlsx library then convert that to json -->
