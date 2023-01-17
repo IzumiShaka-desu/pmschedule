@@ -757,7 +757,7 @@
 		refreshYearlyCalendar();
 
 		$('[data-toggle="tooltip"]').tooltip();
-		$("#form-add-schedule").submit(function(e) {
+		$("#form-add-schedule").on("submit", function(e) {
 			e.preventDefault();
 			var desc = $("#description").val();
 			var date = $("#date").val();
