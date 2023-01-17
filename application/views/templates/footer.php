@@ -68,7 +68,7 @@
 	if (isset($schedules)) {
 		//insert every item to calendarEvents
 		foreach ($schedules as $schedule) {
-			echo "calendarEvents.push({title: '{$schedule['title']}',id:{$schedule['id']}, start: '{$schedule['start']}'});";
+			echo "calendarEvents.push({title: '{$schedule['title']}',id:{$schedule['id']},status:{$schedule['status']}, start: '{$schedule['start']}'});";
 		}
 	}
 	echo "console.log(" . json_encode($rawSchedules) . ");";
@@ -304,9 +304,25 @@
 
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
+				var backgroundColor;
+				var backgroundColor;
+				// if all events is done or done early, set background color to green
+				// else if all events is any missing status, set background color to red
+				// else if all events is any done late status, or draft, set background color to yellow
+				// else set background color to blue
+				if (row.status == 'done' || row.status == 'done early') {
+					backgroundColor = '#5cb85c';
+				} else if (event.status.includes('missing')) {
+					backgroundColor = '#d9534f';
+				} else if (row.status == 'done late' || row.status == 'draft') {
+					backgroundColor = '#f0ad4e';
+				} else {
+					backgroundColor = '#337ab7';
+				}
 				return {
 					title: row.desc,
 					start: row.date,
+					background: backgroundColor,
 				}
 			})),
 		});
