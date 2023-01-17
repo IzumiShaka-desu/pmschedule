@@ -388,17 +388,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 						<a href="be_pages_dashboard.html"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
 					</li> -->
 					<li class="open">
-						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Document</span></a>
+						<a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">Schedules</span></a>
 						<ul>
 							<li>
-								<a class="active" href="<?php echo site_url('home'); ?>">View Documents</a>
+								<a class="active" href="<?php echo site_url('home'); ?>">View Calendar Schedules</a>
 							</li>
 							<li>
-								<a class="active" href="<?php echo site_url('add'); ?>">Add Document</a>
+								<a class="active" href="<?php echo site_url('add'); ?>">Add Schedule</a>
 							</li>
-							<li>
-								<a class="active" href="<?php echo site_url('imports'); ?>">Import Documents</a>
-							</li>
+
 						</ul>
 					</li>
 				</ul>
