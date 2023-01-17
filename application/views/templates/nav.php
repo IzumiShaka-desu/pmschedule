@@ -362,7 +362,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 					</a>
 					<ul class="list-inline mt-10">
 						<li class="list-inline-item">
-							<a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html"><?php echo $_SESSION['username']; ?> </a>
+							<a class="link-effect text-dual-primary-dark font-size-xs font-w600 text-uppercase" href="be_pages_generic_profile.html"><?php echo $_SESSION['name']; ?> </a>
 						</li>
 						<li class="list-inline-item">
 							<!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -517,7 +517,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 				<div class="btn-group" role="group">
 					<button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fa fa-user d-sm-none"></i>
-						<span class="d-none d-sm-inline-block"><?php echo $_SESSION['username']; ?></span>
+						<span class="d-none d-sm-inline-block"><?php echo $_SESSION['name']; ?></span>
 						<i class="fa fa-angle-down ml-5"></i>
 					</button>
 				</div>
