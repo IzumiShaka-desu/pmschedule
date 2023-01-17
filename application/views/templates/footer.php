@@ -322,7 +322,7 @@
 				return {
 					title: row.desc,
 					start: row.date,
-					background: backgroundColor,
+					backgroundColor: backgroundColor,
 				}
 			})),
 		});
