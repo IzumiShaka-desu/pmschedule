@@ -314,12 +314,15 @@
 					start: row.date,
 				}
 			})).map((row) => {
+
 				var backgroundColor;
 				// if all events is done or done early, set background color to green
 				// else if all events is any missing status, set background color to red
 				// else if all events is any done late status, or draft, set background color to yellow
 				// else set background color to blue
-				if (row.status == 'done' || row.status == 'done early') {
+				if (row.status == undefined) {
+					backgroundColor = '#337ab7';
+				} else if (row.status == 'done' || row.status == 'done early') {
 					backgroundColor = '#5cb85c';
 				} else if (row.status.includes('missing')) {
 					backgroundColor = '#d9534f';
