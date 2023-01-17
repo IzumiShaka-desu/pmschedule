@@ -60,6 +60,7 @@ class Login extends CI_Controller
 					'level' => $level,
 					'is_logged_in' => true,
 					'id_user' => $id_user,
+					'username' => $username,
 					'id_department' => $id_department,
 					'id_section' => $id_section
 				);
