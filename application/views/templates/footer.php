@@ -309,7 +309,7 @@
 					title: row.desc,
 					start: row.date,
 				}
-			})).map((event) => {
+			})).map((row) => {
 				var backgroundColor;
 				// if all events is done or done early, set background color to green
 				// else if all events is any missing status, set background color to red
