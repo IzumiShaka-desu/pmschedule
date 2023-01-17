@@ -309,7 +309,7 @@
 					title: row.desc,
 					start: row.date,
 				}
-			}).map((event) => {
+			})).map((event) => {
 				var backgroundColor;
 				// if all events is done or done early, set background color to green
 				// else if all events is any missing status, set background color to red
@@ -317,7 +317,7 @@
 				// else set background color to blue
 				if (row.status == 'done' || row.status == 'done early') {
 					backgroundColor = '#5cb85c';
-				} else if (event.status.includes('missing')) {
+				} else if (row.status.includes('missing')) {
 					backgroundColor = '#d9534f';
 				} else if (row.status == 'done late' || row.status == 'draft') {
 					backgroundColor = '#f0ad4e';
@@ -329,7 +329,7 @@
 					start: row.date,
 					backgroundColor: backgroundColor,
 				}
-			})),
+			}),
 		});
 
 		calendar.render();
