@@ -11,7 +11,7 @@ class Schedule extends CI_Controller
 	public function index()
 	{
 		// if user not loggin redirect to login page
-		if (!$this->session->userdata('logged_in')) {
+		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
 		// det schedules data
@@ -43,7 +43,7 @@ class Schedule extends CI_Controller
 	public function add()
 	{
 		// if user not loggin redirect to login page
-		if (!$this->session->userdata('logged_in')) {
+		if (!$this->session->userdata('is_logged_in')) {
 			redirect('login');
 		}
 		// check if is POST request
