@@ -736,28 +736,7 @@
 		return date;
 	}
 	$(document).ready(function() {
-		//init datatable for add documents if isAddDocuments is true
-		if (isAddDocuments == true) {
-			refreshDataTableAdd();
-		} else {
-			// refreshDataTable();
-		}
-		refreshCalendar();
-		// $('a[data-toggle="tabs"]').on('shown.bs.tab', function(e) {
-		// 	var target = $(e.target).attr("href") // activated tab
-		// 	console.log(target);
-		// });
-		// $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-		// 	var target = $(e.target).attr("href") // activated tab
-		// 	console.log(target);
-		// });
-		setupPreviewScheduleTabs();
-		setupFormScheduleTabs();
-		setupCalendarTabs();
-		refreshYearlyCalendar();
-
-		$('[data-toggle="tooltip"]').tooltip();
-		$("#form-add-schedule").on("submit", function(e) {
+		$("#form-add-schedule").submit(function(e) {
 			e.preventDefault();
 			var desc = $("#description").val();
 			var date = $("#date").val();
@@ -795,6 +774,28 @@
 			addSchedule(desc, date, id_checksheet, priority);
 
 		});
+		//init datatable for add documents if isAddDocuments is true
+		// if (isAddDocuments == true) {
+		// 	refreshDataTableAdd();
+		// } else {
+		// 	// refreshDataTable();
+		// }
+		refreshCalendar();
+		// $('a[data-toggle="tabs"]').on('shown.bs.tab', function(e) {
+		// 	var target = $(e.target).attr("href") // activated tab
+		// 	console.log(target);
+		// });
+		// $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+		// 	var target = $(e.target).attr("href") // activated tab
+		// 	console.log(target);
+		// });
+		setupPreviewScheduleTabs();
+		setupFormScheduleTabs();
+		setupCalendarTabs();
+		refreshYearlyCalendar();
+
+		$('[data-toggle="tooltip"]').tooltip();
+
 		// listen #table-view on class property changed if its .show then show else hide
 		$("#table-view").on('classChanged', function() {
 			if ($(this).val() == "show") {
