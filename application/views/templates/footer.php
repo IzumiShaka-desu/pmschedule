@@ -325,8 +325,7 @@
 					backgroundColor = '#337ab7';
 				}
 				return {
-					title: row.desc,
-					start: row.date,
+					...row,
 					backgroundColor: backgroundColor,
 				}
 			}),
