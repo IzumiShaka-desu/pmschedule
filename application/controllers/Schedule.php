@@ -42,10 +42,7 @@ class Schedule extends CI_Controller
 	}
 	public function add()
 	{
-		// if user not loggin redirect to login page
-		if (!$this->session->userdata('is_logged_in')) {
-			redirect('login');
-		}
+
 		// check if is POST request
 		// then insert data to database
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -64,7 +61,10 @@ class Schedule extends CI_Controller
 			return $dates;
 		}
 
-
+		// if user not loggin redirect to login page
+		if (!$this->session->userdata('is_logged_in')) {
+			redirect('login');
+		}
 		// get schedules data
 		$schedules = $this->m_schedules->get_schedules_with_status();
 		$data['schedules'] = [];
