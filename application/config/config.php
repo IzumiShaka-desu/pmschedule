@@ -23,7 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:8887/pmschedule/';
+$config['base_url'] = 'http://10.19.16.11/pmschedule/';
 
 /*
 |--------------------------------------------------------------------------
