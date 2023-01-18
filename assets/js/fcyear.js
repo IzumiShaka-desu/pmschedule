@@ -178,8 +178,8 @@ class FcYear {
 						},
 					});
 					this.calendars[monthIndex].render();
-					console.log(this.calendars[monthIndex]);
-					console.log(`calendar ${monthIndex} rendered have ${events.length} events`);
+					// console.log(this.calendars[monthIndex]);
+					// console.log(`calendar ${monthIndex} rendered have ${events.length} events`);
 					// console.log(`go to date ${dateString}`);
 
 					// this.calendars[monthIndex].gotoDate(dateString);
