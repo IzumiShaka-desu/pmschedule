@@ -182,12 +182,12 @@
 			const rawPath = "response/viewResponseData?id=" + schedule.id_response + "&note=from-schedule-" + idSchedule;
 			const base64Path = btoa(rawPath);
 
-			const rawUrl = "https://portal.incoe.co.id/checksheet/login/redirectAnonymHandler?a=<?php echo $_SESSION['username']; ?>&b=<?php echo $_SESSION['password']; ?>&c=" + base64Path;
+			const rawUrl = "https://portal.incoe.astra.co.id/checksheet/login/redirectAnonymHandler?a=<?php echo $_SESSION['username']; ?>&b=<?php echo $_SESSION['password']; ?>&c=" + base64Path;
 			base64url = btoa(rawUrl);
 		} else {
 			const rawPath = "dashboard/insertData?id=" + schedule.id_checksheet + "&note=from-schedule-" + idSchedule;
 			const base64Path = btoa(rawPath);
-			const rawUrl = "https://portal.incoe.co.id/checksheet/login/redirectAnonymHandler?a=<?php echo $_SESSION['username']; ?>&b=<?php echo $_SESSION['password']; ?>&c=" + base64Path;
+			const rawUrl = "https://portal.incoe.astra.co.id/checksheet/login/redirectAnonymHandler?a=<?php echo $_SESSION['username']; ?>&b=<?php echo $_SESSION['password']; ?>&c=" + base64Path;
 			base64url = btoa(rawUrl);
 		}
 		dialogContent += "<a class='btn btn-sm btn-primary' href='<?= base_url('schedule/redirect') ?>/" + base64url + "' target='_blank'>" + buttonTitle + "</a>";
