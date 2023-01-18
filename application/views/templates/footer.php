@@ -181,7 +181,6 @@
 		if (schedule.id_response != undefined) {
 			const rawPath = "response/viewResponseData?id=" + schedule.id_response + "&note=from-schedule-" + idSchedule;
 			const base64Path = btoa(rawPath);
-
 			const rawUrl = "http://portal.incoe.astra.co.id/checksheet/login/redirectAnonymHandler?a=<?php echo $_SESSION['username']; ?>&b=<?php echo $_SESSION['password']; ?>&c=" + base64Path;
 			base64url = btoa(rawUrl);
 		} else {
