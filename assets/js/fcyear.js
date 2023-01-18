@@ -119,7 +119,7 @@ class FcYear {
 
 		for (let [key, value] of rawEvents) {
 			var dateString = `${yearlyCalendar.year}`
-				+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `${key}`;
+				+ '-' + (monthIndex < 9 ? `0${(monthIndex + 1)}` : (monthIndex + 1)) + `-${key}`;
 			var backgroundColor;
 			// if all events is done or done early, set background color to green
 			// else if all events is any missing status, set background color to red
