@@ -340,7 +340,8 @@
 
 						},
 						error: function(data) {
-							alert("Error");
+							console.log(data);
+							alert(data);
 							info.revert();
 						}
 					});
