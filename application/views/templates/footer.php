@@ -310,7 +310,7 @@
 			editable: monthlyCalendarEditable,
 			eventDrop: function(info) {
 				// get date gmt +7
-				let timeInMs = date.valueOf();
+				let timeInMs = new Date(info.event.start).valueOf();
 				// Mengubah milidetik
 				timeInMs += 7 * 60 * 60 * 1000; // Tambahkan 7 jam
 				// let fixedDateStr = new Date(timeInMs).toISOString().split('T')[0];
@@ -321,7 +321,7 @@
 
 				let dateStr2 = new Date(date).toISOString().split('T')[0];
 
-				alert(info.event.title + " will rescheduled on " + dateStr2);
+				alert(info.event.title + " will rescheduled on " + fixedDateStr);
 
 				if (!confirm("Are you sure about this change?")) {
 					info.revert();
