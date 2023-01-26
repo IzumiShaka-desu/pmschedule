@@ -108,7 +108,10 @@ class Schedule extends CI_Controller
 		// then insert data to database
 		if ($this->input->server('REQUEST_METHOD') == 'POST') {
 			//get json data the parse to array and save with add_multiple_schedules
-			echo var_dump($this->input->post());
+			$id = $this->input->post('id');
+			$date = $this->input->post('date');
+			$result = $this->m_schedules->reschedule($id, $date);
+			return $result;
 		}
 	}
 }
