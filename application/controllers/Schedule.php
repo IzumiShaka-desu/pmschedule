@@ -117,7 +117,7 @@ class Schedule extends CI_Controller
 				return $this->output
 					->set_status_header(200)
 					->set_content_type('application/json')
-					->set_output(json_encode(['message' => 'success reschedule']));
+					->set_output(json_encode(['message' => 'success reschedule', 'data' => $result]));
 			} else {
 				return $this->output
 					->set_status_header(500)
