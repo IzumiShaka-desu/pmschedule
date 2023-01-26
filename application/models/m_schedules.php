@@ -126,6 +126,14 @@ class M_schedules extends CI_Model
 		$this->db->where('id_schedule', $id);
 		return $this->db->delete($this->tableName);
 	}
+	public function reschedule($id, $date)
+	{
+		//set ,nama_alat,pabrik,kapasistas,lokasi,no_seri,no_perijinan,expired_date
+		//by id_schedule
+		$this->db->where('id_schedule', $id);
+		$this->db->set('date', $date);
+		return $this->db->update($this->tableName);
+	}
 	// public function flip_status($id)
 	// {
 	// 	//flip status if active then processing and vice versa
