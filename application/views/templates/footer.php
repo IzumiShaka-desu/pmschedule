@@ -324,8 +324,29 @@
 
 				alert(info.event.title + " will rescheduled on " + fixedDateStr);
 
-				if (!confirm("Are you sure about this change?")) {
+				if (confirm("Are you sure about this change?")) {
+					// info.revert();
+					$.ajax({
+						url: "<?= base_url('schedule/reschedule') ?>",
+						type: "POST",
+						data: {
+							id: info.event._def.publicId,
+							date: date
+						},
+						success: function(data) {
+							alert(data);
+							// alert("Schedule has been updated");
+							// location.reload();
+
+						},
+						error: function(data) {
+							alert("Error");
+							info.revert();
+						}
+					});
+				} else {
 					info.revert();
+
 				}
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
