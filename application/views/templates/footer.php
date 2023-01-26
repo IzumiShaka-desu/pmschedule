@@ -307,6 +307,10 @@
 				showDialog(info.event._def.publicId);
 
 			},
+			editable: monthlyCalendarEditable,
+			eventDragStop: function(info) {
+				console.log(info);
+			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 
 				return {
@@ -832,6 +836,12 @@
 		// 	// modal.find('.modal-title').text('New message to ' + recipient)
 		// 	$('#form-modal-upload').attr('action', '<?php echo base_url('upload/') ?>' + id);
 		// })
+
+		// enable-editable-calendar checkbox on change event change monthlyCalendarEditable
+		$("#enable-editable-calendar").change(function() {
+			monthlyCalendarEditable = $(this).is(":checked");
+			refreshCalendar();
+		});
 
 		$('#file').change(function(e) {
 			var files = e.target.files,
