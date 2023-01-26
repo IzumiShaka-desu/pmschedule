@@ -338,7 +338,7 @@
 								id: info.event._def.publicId,
 								date: dateStr2,
 							});
-							console.log(date);
+							console.log(data);
 							alert(data['message']);
 							// alert("Schedule has been updated");
 							// location.reload();
