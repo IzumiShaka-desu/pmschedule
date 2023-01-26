@@ -102,4 +102,13 @@ class Schedule extends CI_Controller
 		// $this->load->view('index');
 		// echo 'Hello World!';
 	}
+	public function reschedule()
+	{
+		// check if is POST request
+		// then insert data to database
+		if ($this->input->server('REQUEST_METHOD') == 'POST') {
+			//get json data the parse to array and save with add_multiple_schedules
+			echo $this->input->post();
+		}
+	}
 }
