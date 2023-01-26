@@ -58,7 +58,7 @@
 
 <script>
 	var isAddDocuments = '<?php echo isset($is_add_documents) ? $is_add_documents : 'false'; ?>' === 'true';
-
+	var monthlyCalendarEditable = false;
 	var mapOfSheet = {};
 	var dataTableRows = [];
 	let calendarEvents = [];

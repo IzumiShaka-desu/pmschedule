@@ -75,10 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.19.16.21',
+	'hostname' => '10.19.23.18',
 	'username' => 'sa',
-	'password' => 'User@new1',
-	'database' => 'db_checksheet_new',
+	// 'password' => 'User@new1',
+	'password' => 'admin',
+	// 'database' => 'db_checksheet_new',
+	'database' => 'db_checksheet',
+
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
