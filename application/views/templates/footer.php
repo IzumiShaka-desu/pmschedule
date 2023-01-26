@@ -309,8 +309,9 @@
 			},
 			editable: monthlyCalendarEditable,
 			eventDrop: function(info) {
+				let date = new Date(info.event.start);
 				// get date gmt +7
-				let timeInMs = new Date(info.event.start).valueOf();
+				let timeInMs = date.valueOf();
 				// Mengubah milidetik
 				timeInMs += 7 * 60 * 60 * 1000; // Tambahkan 7 jam
 				// let fixedDateStr = new Date(timeInMs).toISOString().split('T')[0];
