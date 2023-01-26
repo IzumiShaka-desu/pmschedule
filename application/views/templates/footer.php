@@ -319,8 +319,8 @@
 					day: '2-digit',
 					month: 'short'
 				});
-
-				let dateStr2 = new Date(date).toISOString().split('T')[0];
+				// format date to yyyy-mm-dd
+				let dateStr2 = new Date(timeInMs).toISOString().split('T')[0];
 
 				alert(info.event.title + " will rescheduled on " + fixedDateStr);
 
@@ -331,9 +331,14 @@
 						type: "POST",
 						data: {
 							id: info.event._def.publicId,
-							date: dateStr2
+							date: dateStr2,
 						},
 						success: function(data) {
+							console.log({
+								id: info.event._def.publicId,
+								date: dateStr2,
+							});
+							console.log(date);
 							alert(data['message']);
 							// alert("Schedule has been updated");
 							// location.reload();
