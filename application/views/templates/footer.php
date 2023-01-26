@@ -331,18 +331,23 @@
 						type: "POST",
 						data: {
 							id: info.event._def.publicId,
-							date: date
+							date: dateStr2
 						},
 						success: function(data) {
-							alert(data);
+							alert(data['message']);
 							// alert("Schedule has been updated");
 							// location.reload();
 
 						},
 						error: function(data) {
 							console.log(data);
-							alert(data);
+
 							info.revert();
+							try {
+								alert(data['message']);
+							} catch (e) {
+								console.log(e);
+							}
 						}
 					});
 				} else {
