@@ -44,7 +44,7 @@
  						<label class="col-12" for="example-text-input">Enable Editable Calendar</label>
  						<div class="col-12">
  							<label class="css-control css-control-primary css-switch">
- 								<input type="checkbox" class="css-control-input" id="enable-editable-calendar" name="enable-editable-calendar" checked>
+ 								<input type="checkbox" class="css-control-input" id="enable-editable-calendar" name="enable-editable-calendar">
  								<span class="css-control-indicator"></span>
  							</label>
  						</div>
