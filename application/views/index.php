@@ -38,19 +38,7 @@
  				<div class="col-12">
  					<br>
  				</div>
- 				<div class="col-12">
- 					<!-- create element to enable/disable editable calendar status -->
- 					<div class="form-group row">
- 						<label class="col-12" for="example-text-input">Enable Editable Calendar</label>
- 						<div class="col-12">
- 							<label class="css-control css-control-primary css-switch">
- 								<input type="checkbox" class="css-control-input" id="enable-editable-calendar" name="enable-editable-calendar">
- 								<span class="css-control-indicator"></span>
- 							</label>
- 						</div>
 
- 					</div>
- 				</div>
  				<!-- create tombol import to database on right side -->
  				<!-- <div class="col-12 text-right">
  					<button type="button" class="btn btn-alt-primary" id="exports-table">Exports All</button>
@@ -58,6 +46,19 @@
 
  				<!-- </div> -->
  				<div id="monthly-view" class="col-12">
+ 					<div class="col-12">
+ 						<!-- create element to enable/disable editable calendar status -->
+ 						<div class="form-group row">
+ 							<label class="col-12" for="example-text-input">Enable Editable Calendar</label>
+ 							<div class="col-12">
+ 								<label class="css-control css-control-primary css-switch">
+ 									<input type="checkbox" class="css-control-input" id="enable-editable-calendar" name="enable-editable-calendar">
+ 									<span class="css-control-indicator"></span>
+ 								</label>
+ 							</div>
+
+ 						</div>
+ 					</div>
  					<br>
  					<div id='calendar'></div>
  				</div>
