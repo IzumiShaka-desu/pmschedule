@@ -111,7 +111,19 @@ class Schedule extends CI_Controller
 			$id = $this->input->post('id');
 			$date = $this->input->post('date');
 			$result = $this->m_schedules->reschedule($id, $date);
-			return $result;
+			// return $result;
+			// if success return success message else return error message and 500 status code
+			if ($result) {
+				return $this->output
+					->set_status_header(200)
+					->set_content_type('application/json')
+					->set_output(json_encode(['message' => 'success reschedule']));
+			} else {
+				return $this->output
+					->set_status_header(500)
+					->set_content_type('application/json')
+					->set_output(json_encode(['message' => 'error reschedule']));
+			}
 		}
 	}
 }
