@@ -308,8 +308,24 @@
 
 			},
 			editable: monthlyCalendarEditable,
-			eventDragStop: function(info) {
-				console.log(info);
+			eventDrop: function(info) {
+				// get date gmt +7
+				let timeInMs = date.valueOf();
+				// Mengubah milidetik
+				timeInMs += 7 * 60 * 60 * 1000; // Tambahkan 7 jam
+				// let fixedDateStr = new Date(timeInMs).toISOString().split('T')[0];
+				let fixedDateStr = new Date(timeInMs).toLocaleDateString('id-ID', {
+					day: '2-digit',
+					month: 'short'
+				});
+
+				let dateStr2 = new Date(date).toISOString().split('T')[0];
+
+				alert(info.event.title + " will rescheduled on " + dateStr2);
+
+				if (!confirm("Are you sure about this change?")) {
+					info.revert();
+				}
 			},
 			events: calendarEvents.concat(dataTableRows.map((row) => {
 
